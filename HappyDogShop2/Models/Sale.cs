@@ -13,8 +13,14 @@ namespace HappyDogShop2.Models
         public DateTime Start_date { get; set; }
         [Required(ErrorMessage = "End date is required"), DataType(DataType.Date), Display(Name = "End date")]
         public DateTime End_date { get; set; }
+        [Required(ErrorMessage = "Name is required")]
+        public string Name { get; set; }
+        [Range(1, 99)] 
+        public int Value_in_percent { get; set; }
 
-        //type
-        //value moze zrobic to z juz gotowymi rzeczami
+
+        public virtual ICollection<Product> Products { get; set; } 
+        public virtual ICollection<Category> Categories { get; set; }
+        public virtual ICollection<User> Users { get; set; }
     }
 }

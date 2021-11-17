@@ -12,11 +12,14 @@ public class Category
     {
         public int CategoryId { get; set; }
         public int? ParentId { get; set; }
+        [Required(ErrorMessage = "Name is required")]
+        public string Name { get; set; }
         [DefaultValue(false), Display(Name = "Is hidden")]
         public bool Is_hidden { get; set; }
 
         public virtual Category Parent { get; set; }
+        public virtual Sale Sale { get; set; }
         public virtual ICollection<Category> Children { get; set; }
-        public virtual ICollection<Product> Products { get; set; } //????
+        public virtual ICollection<Product> Products { get; set; }
     }
 }
