@@ -31,7 +31,6 @@ namespace HappyDogShop2.Models
         [DisplayFormat(DataFormatString = "Przyjęte")]
         public Status Status { get; set; }
         
-        
         public List<CartItem> CartItem { get; set; }
     }
 }

@@ -2,7 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -11,19 +10,17 @@ namespace HappyDogShop2.Models
     public class User
     {
         public int UserId { get; set; }
-        [Required(ErrorMessage = "To pole jest wymagane"), StringLength(50, MinimumLength = 3), Display(Name = "Imię")]
+        [Required, StringLength(50, MinimumLength = 3), Display(Name = "First name")]
         public string First_name { get; set; }
-        [Required(ErrorMessage = "To pole jest wymagane"), StringLength(50, MinimumLength = 3), Display(Name = "Nazwisko")]
+        [Required, StringLength(50, MinimumLength = 3), Display(Name = "Last name")]
         public string Last_name { get; set; }
-        [Required(ErrorMessage = "To pole jest wymagane"), StringLength(10, MinimumLength = 6), Display(Name = "Login")]
+        [Required, StringLength(10, MinimumLength = 6)]
         public string Username { get; set; }
-        [Required(ErrorMessage = "To pole jest wymagane"), StringLength(10, MinimumLength = 6), DataType(DataType.Password), Display(Name = "Hasło")]
+        [Required, StringLength(10, MinimumLength = 6), DataType(DataType.Password)]
         public string Password { get; set; }
-        [DefaultValue(false), Display(Name = "Admin")]
+        //[Required, DataType(DataType.PhoneNumber), Display(Name = "Phone number")]
+        //public string Phone_number { get; set; }
+        [DefaultValue(false), Display(Name = "Is admin")]
         public bool Is_admin { get; set; }
-        
-        [ForeignKey("Sale"), Display(Name = "Promocja")]
-        public int? SaleId { get; set; }
-        public virtual Sale Sale { get; set; }
     }
 }

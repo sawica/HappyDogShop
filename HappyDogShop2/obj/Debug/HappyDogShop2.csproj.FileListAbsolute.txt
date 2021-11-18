@@ -85,6 +85,8 @@ C:\Users\sawic\source\repos\HappyDogShop2\HappyDogShop2\bin\pl\System.Web.WebPag
 C:\Users\sawic\source\repos\HappyDogShop2\HappyDogShop2\bin\pl\System.Web.WebPages.Razor.resources.dll
 C:\Users\sawic\source\repos\HappyDogShop2\HappyDogShop2\obj\Debug\HappyDogShop2.csproj.AssemblyReference.cache
 C:\Users\sawic\source\repos\HappyDogShop2\HappyDogShop2\obj\Debug\HappyDogShop2.csproj.CoreCompileInputs.cache
-C:\Users\sawic\source\repos\HappyDogShop2\HappyDogShop2\obj\Debug\HappyDogShop2.csproj.CopyComplete
 C:\Users\sawic\source\repos\HappyDogShop2\HappyDogShop2\obj\Debug\HappyDogShop2.dll
 C:\Users\sawic\source\repos\HappyDogShop2\HappyDogShop2\obj\Debug\HappyDogShop2.pdb
+C:\Users\sawic\source\repos\HappyDogShop2\HappyDogShop2\obj\Debug\HappyDogShop2.Migrations.InitialCreate.resources
+C:\Users\sawic\source\repos\HappyDogShop2\HappyDogShop2\obj\Debug\HappyDogShop2.csproj.GenerateResource.cache
+C:\Users\sawic\source\repos\HappyDogShop2\HappyDogShop2\obj\Debug\HappyDogShop2.Migrations.SaleCategoryControllers.resources
