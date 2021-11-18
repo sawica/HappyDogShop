@@ -4,16 +4,16 @@
     ViewBag.Title = "Edit";
 }
 
-<h2>Edit</h2>
+
 
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Product</h4>
-        <hr />
+
+    <div style=" border-style: double; border-radius: 8px; border-color: #f7e6cf; padding: 30px; margin: 50px;" class="sawibox form-horizontal">
+        <h4>Edytuj produkt:</h4>
+        <hr style="height: 1px; background-color: #e43e86; color: #e43e86" />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.ProductId)
 
@@ -61,14 +61,14 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
+                <input type="submit" value="Zapisz" class="btn btn-default" style="margin-left: 215px; border-color: #e43e86" />
             </div>
         </div>
     </div>
 }
 
 <div>
-    @Html.ActionLink("Back to List", "Index")
+    @Html.ActionLink("Wróć", "Index")
 </div>
 
 @section Scripts {

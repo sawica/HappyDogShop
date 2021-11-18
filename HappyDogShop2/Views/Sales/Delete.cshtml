@@ -1,0 +1,54 @@
+﻿@model HappyDogShop2.Models.Sale
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h4>Czy jesteś pewien, że chcesz usunąć tę promocję?</h4>
+<div>
+    <hr style="height: 1px; background-color: #e43e86; color: #e43e86" />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Start_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Start_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.End_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.End_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Value_in_percent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Value_in_percent)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Usuń" class="btn btn-default" style="margin-left: 215px; border-color: #e43e86" /> |
+            @Html.ActionLink("Wróć", "Index")
+        </div>
+    }
+</div>

@@ -1,0 +1,50 @@
+﻿@model HappyDogShop2.Models.Sale
+
+@{
+    ViewBag.Title = "Details";
+}
+
+
+
+<div>
+    <h4>Szczegóły:</h4>
+    <hr style="height: 1px; background-color: #e43e86; color: #e43e86" />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Start_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Start_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.End_date)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.End_date)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Name)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Name)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Value_in_percent)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Value_in_percent)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Edytuj", "Edit", new { id = Model.SaleId}) |
+    @Html.ActionLink("Wróć", "Index")
+</p>
