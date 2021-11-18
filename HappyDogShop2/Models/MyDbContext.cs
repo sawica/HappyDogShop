@@ -19,6 +19,8 @@ namespace HappyDogShop2.Models
 
 		public DbSet<User> Users { get; set; }
 
+        public System.Data.Entity.DbSet<HappyDogShop2.Models.Category> Categories { get; set; }
 
-	}
+        public System.Data.Entity.DbSet<HappyDogShop2.Models.Sale> Sales { get; set; }
+    }
 }
