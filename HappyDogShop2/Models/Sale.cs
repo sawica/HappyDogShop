@@ -9,13 +9,13 @@ namespace HappyDogShop2.Models
     public class Sale
     {
         public int SaleId { get; set; }
-        [Required(ErrorMessage = "Start date is required"), DataType(DataType.Date), Display(Name = "Start date")]
+        [Required(ErrorMessage = "To pole jest wymagane"), DataType(DataType.Date), Display(Name = "Data rozpoczęcia")]
         public DateTime Start_date { get; set; }
-        [Required(ErrorMessage = "End date is required"), DataType(DataType.Date), Display(Name = "End date")]
+        [Required(ErrorMessage = "To pole jest wymagane"), DataType(DataType.Date), Display(Name = "Data zakończenia")]
         public DateTime End_date { get; set; }
-        [Required(ErrorMessage = "Name is required")]
+        [Required(ErrorMessage = "To pole jest wymagane"), Display(Name = "Nazwa")]
         public string Name { get; set; }
-        [Range(1, 99)] 
+        [Range(1, 99), Display(Name = "Wartość w %")] 
         public int Value_in_percent { get; set; }
 
 
