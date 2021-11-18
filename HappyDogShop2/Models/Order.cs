@@ -30,7 +30,7 @@ namespace HappyDogShop2.Models
         public string Phone_number { get; set; }
         [DisplayFormat(DataFormatString = "Przyjęte")]
         public Status Status { get; set; }
-        
+          
         public List<CartItem> CartItem { get; set; }
     }
 }
