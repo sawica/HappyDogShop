@@ -38,22 +38,30 @@
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Is_hidden, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.IsHidden, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
-                    @Html.EditorFor(model => model.Is_hidden)
-                    @Html.ValidationMessageFor(model => model.Is_hidden, "", new { @class = "text-danger" })
+                    @Html.EditorFor(model => model.IsHidden)
+                    @Html.ValidationMessageFor(model => model.IsHidden, "", new { @class = "text-danger" })
                 </div>
             </div>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Stock_count, htmlAttributes: new { @class = "control-label col-md-2" })
+            @Html.LabelFor(model => model.StockCount, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Stock_count, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Stock_count, "", new { @class = "text-danger" })
+                @Html.EditorFor(model => model.StockCount, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.StockCount, "", new { @class = "text-danger" })
             </div>
         </div>
+        
+        <div class="form-group">
+                    @Html.LabelFor(model => model.ReleasedDate, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+                        @Html.EditorFor(model => model.ReleasedDate, new { htmlAttributes = new { @class = "form-control" } })
+                        @Html.ValidationMessageFor(model => model.ReleasedDate, "", new { @class = "text-danger" })
+                    </div>
+                </div>
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">

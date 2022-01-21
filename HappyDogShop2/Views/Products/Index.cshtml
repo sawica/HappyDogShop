@@ -21,10 +21,10 @@
             @Html.DisplayNameFor(model => model.Price)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Is_hidden)
+            @Html.DisplayNameFor(model => model.IsHidden)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Stock_count)
+            @Html.DisplayNameFor(model => model.StockCount)
         </th>
         <th></th>
     </tr>
@@ -41,10 +41,10 @@
             @Html.DisplayFor(modelItem => item.Price)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Is_hidden)
+            @Html.DisplayFor(modelItem => item.IsHidden)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.Stock_count)
+            @Html.DisplayFor(modelItem => item.StockCount)
         </td>
         <td>
             @Html.ActionLink("Edytuj", "Edit", new { id=item.ProductId }) |
