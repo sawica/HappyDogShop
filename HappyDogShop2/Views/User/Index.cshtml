@@ -1,0 +1,113 @@
+﻿@model IEnumerable<HappyDogShop2.Models.User>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h4>Kategorie:</h4>
+
+<p>
+    @Html.ActionLink("Utwórz nowe", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Username)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Password)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.IsAdmin)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.City)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.Country)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.ZipCode)
+        </th>
+
+        <th>
+            @Html.DisplayNameFor(model => model.SaleId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+                    @Html.DisplayFor(modelItem => item.Username)
+                </td>
+        
+                <td>
+                    @Html.DisplayFor(modelItem => item.Password)
+                </td>
+        
+                <td>
+                    @Html.DisplayFor(modelItem => item.FirstName)
+                </td>
+        
+                <td>
+                    @Html.DisplayFor(modelItem => item.LastName)
+                </td>
+        
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsAdmin)
+                </td>
+        
+                <td>
+                    @Html.DisplayFor(modelItem => item.PhoneNumber)
+                </td>
+        
+                <td>
+                    @Html.DisplayFor(modelItem => item.Address)
+                </td>
+        
+                <td>
+                    @Html.DisplayFor(modelItem => item.City)
+                </td>
+        
+                <td>
+                    @Html.DisplayFor(modelItem => item.Country)
+                </td>
+        
+                <td>
+                    @Html.DisplayFor(modelItem => item.ZipCode)
+                </td>
+        
+                <td>
+                    @Html.DisplayFor(modelItem => item.SaleId)
+                </td>
+        <td>
+            @Html.ActionLink("Edytuj", "Edit", new { id=item.UserId }) |
+            @Html.ActionLink("Szczegóły", "Details", new { id=item.UserId }) |
+            @Html.ActionLink("Usuń", "Delete", new { id=item.UserId })
+        </td>
+    </tr>
+}
+
+</table>
