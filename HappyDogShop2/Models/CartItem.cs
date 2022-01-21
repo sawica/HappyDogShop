@@ -12,5 +12,10 @@ namespace HappyDogShop2.Models
         [ForeignKey("Product"), Display(Name = "Produkt")]
         public int ProductId { get; set; }
         public Product Product { get; set; }
+        
+        [ForeignKey("Order"), Display(Name = "Zamówienie")]
+        public int OrderId { get; set; }
+        public Order Order { get; set; }
+        
     }
 }

@@ -18,14 +18,16 @@ namespace HappyDogShop2.Models
         [Required(ErrorMessage = "To pole jest wymagane"), Range(1, 10000), Display(Name = "Cena")] //mozna zrobic wlasny validator
         public int Price { get; set; }
         [DefaultValue(false), Display(Name = "Ukryty")]
-        public bool Is_hidden { get; set; }
+        public bool IsHidden { get; set; }
         [Required(ErrorMessage = "To pole jest wymagane"), Display(Name = "Stan magazynowy")]
-        public int Stock_count { get; set; }
-        [Required(ErrorMessage = "To pole jest wymagane"), Display(Name = "Obraz nr 1")]
-        public string Image1 { get; set; }
-        [Required(ErrorMessage = "To pole jest wymagane"), Display(Name = "Obraz nr 2")]
-        public string Image2 { get; set; }
+        public int StockCount { get; set; }
+        [Required(ErrorMessage = "To pole jest wymagane"), Display(Name = "Data dodania")]
+        public int ReleasedDate { get; set; }
         
+        
+        [Required(ErrorMessage = "To pole jest wymagane"), Display(Name = "Obraz ")]
+        public int MediaTypeId { get; set; }
+        public virtual MediaType MediaType { get; set; }
         
         [ForeignKey("Category"), Display(Name = "Kategoria")]
         public int CategoryId { get; set; }

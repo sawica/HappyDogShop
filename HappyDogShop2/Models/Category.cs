@@ -15,7 +15,7 @@ public class Category
         [Required(ErrorMessage = "To pole jest wymagane"),Display(Name = "Nazwa")]
         public string Name { get; set; }
         [DefaultValue(false), Display(Name = "Ukryty")]
-        public bool Is_hidden { get; set; }
+        public bool IsHidden { get; set; }
         
         [ForeignKey("Parent"), Display(Name = "Rodzic")]
         public int? ParentId { get; set; }
