@@ -49,8 +49,8 @@
         </div>
     </div>
     
-    @Html.HiddenFor(model => model.IsAdmin)
-    <div class="form-group">
+    @* @Html.HiddenFor(model => model.IsAdmin) *@
+    <div id="admin2" style="display: none" class="form-group">
         @Html.LabelFor(model => model.IsAdmin, htmlAttributes: new {@class = "control-label col-md-2"})
         <div class="col-md-10">
             <div class="checkbox">
@@ -113,7 +113,7 @@
         </div>
     </div>
     
-    <div class="form-group">
+    <div id="sale" style="display: none" class="form-group">
                 @Html.LabelFor(model => model.SaleId, htmlAttributes: new { @class = "control-label col-md-2" })
                 <div class="col-md-10">
                     <div class="checkbox">
@@ -121,9 +121,7 @@
                         @Html.ValidationMessageFor(model => model.SaleId, "", new { @class = "text-danger" })
                     </div>
                 </div>
-    
-                </div>
-
+    </div>
     <div class="form-group">
         <div class="col-md-offset-2 col-md-10">
             <input type="submit" value="Dodaj" class="btn btn-default" style="margin-left: 215px; border-color: #e43e86" />
@@ -135,6 +133,15 @@
 <div>
     @Html.ActionLink("Wróć", "Index")
 </div>
+
+<script type="text/javascript">
+    let isAdmin = '@Session["isAdmin"]'
+    if (isAdmin === 'True')
+    {
+        document.getElementById("sale").style.display='block'
+        document.getElementById('admin2').style.display='block'
+    }
+</script>
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
