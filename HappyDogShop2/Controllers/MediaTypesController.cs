@@ -15,9 +15,18 @@ namespace HappyDogShop2.Controllers
         private MyDbContext db = new MyDbContext();
 
         // GET: MediaTypes
-        public ActionResult Index()
+        public ActionResult Index(string searchString = "")
         {
-            return View(db.MediaTypes.ToList());
+            List<MediaType> list= new List<MediaType>();
+            if (searchString != "")
+            {
+                list = db.MediaTypes.Where(mediaType => mediaType.Title == searchString).ToList();
+            }
+            else
+            {
+                list = db.MediaTypes.ToList();
+            }
+            return View(list);
         }
 
         // GET: MediaTypes/Details/5

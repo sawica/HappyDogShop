@@ -15,9 +15,18 @@ namespace HappyDogShop2.Controllers
         private MyDbContext db = new MyDbContext();
 
         // GET: Sales
-        public ActionResult Index()
+        public ActionResult Index(string searchString = "")
         {
-            return View(db.Sales.ToList());
+            List<Sale> list= new List<Sale>();
+            if (searchString != "")
+            {
+                list = db.Sales.Where(sale => sale.Name == searchString).ToList();
+            }
+            else
+            {
+                list = db.Sales.ToList();
+            }
+            return View(list);
         }
 
         // GET: Sales/Details/5

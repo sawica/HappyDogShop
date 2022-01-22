@@ -9,6 +9,38 @@
 <p>
     @Html.ActionLink("Utwórz nowe", "Create")
 </p>
+
+<form asp-controller="User" asp-action="Index" method="get">
+    <p>
+        Wszyscy: <input type="hidden" name="AllUsers" value="true"><input type="checkbox" checked="checked" onclick="this.previousSibling.value=false">
+    </p>
+    
+    <p>
+        Admin: <input type="hidden" name="IsAdmin" value="false" ><input type="checkbox" name="IsAdmin" onclick="this.previousSibling.value=true">
+    </p>
+    
+    <p>
+        Imię: <input type="text" name="FirstName"/>
+    </p>
+    
+    <p>
+        Nazwisko: <input type="text" name="LastName"/>
+    </p>
+    
+    <p>
+        Miasto: <input type="text" name="City"/>
+    </p>
+    
+    <p>
+        Państwo: <input type="text" name="Country"/>
+    </p>
+    
+    <p>
+        <input type="submit" value="Szukaj"/>
+    </p>
+    
+</form>
+
 <table class="table">
     <tr>
         <th>
