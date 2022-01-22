@@ -1,6 +1,45 @@
 ﻿@{
     ViewBag.Title = "Home Page";
 }
+<div style="height: 50px">
+    
+</div>
+@* slider *@
+<div style=" margin: 30px auto ; display: flex; justify-content: center" > 
+    <div class="mySlides sawislider">
+        <img src="https://lillypetshop.pl/950-thickbox_default/royal-nap-legowisko-dla-sredniego-i-duzego-psa-silver-grey.jpg" style="height: 370px; padding: 0; margin: 0">
+        <img src="https://lillypetshop.pl/1076-big_default/organiczna-pilka-rainbow-green.jpg" style="height: 370px; padding: 0; margin: 0">
+    </div>
+
+    <div class="mySlides sawislider">
+        <img src="https://lillypetshop.pl/1076-big_default/organiczna-pilka-rainbow-green.jpg" style="height: 370px; padding: 0; margin: 0">
+        <img src="https://lillypetshop.pl/950-thickbox_default/royal-nap-legowisko-dla-sredniego-i-duzego-psa-silver-grey.jpg" style="height: 370px; padding: 0; margin: 0">
+    </div>
+
+    <div class="mySlides sawislider">
+            <img src="https://lillypetshop.pl/950-thickbox_default/royal-nap-legowisko-dla-sredniego-i-duzego-psa-silver-grey.jpg" style="height: 370px; padding: 0; margin: 0">
+        <img src="https://lillypetshop.pl/1072-thickbox_default/dreamy-mata-podrozna-dla-psa-lub-kota-grey.jpg" style="height: 370px; padding: 0; margin: 0">
+
+    </div>
+
+</div>
+<script>
+var slideIndex = 0;
+showSlides();
+
+function showSlides() {
+  let i;
+  let slides = document.getElementsByClassName("mySlides");
+  for (i = 0; i < slides.length; i++) {
+    slides[i].style.display = "none";  
+  }
+  slideIndex++;
+  if (slideIndex > slides.length) {slideIndex = 1}    
+  slides[slideIndex-1].style.display = "block";  
+  setTimeout(showSlides, 2000); // Change image every 2 seconds
+}
+</script>
+@* koniec slidera *@
 
 <div style="min-height: 400px" class="sjumbotron">
     <h1 style="margin-top: 80px; margin-bottom: 60px; color: #e43e86; font-family:Georgia; font-size: 70px">HappyDog Shop</h1>
