@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.Drawing.Printing;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -15,9 +16,19 @@ namespace HappyDogShop2.Controllers
         private MyDbContext db = new MyDbContext();
 
         // GET: Products
-        public ActionResult Index()
+        public ActionResult Index(int categoryId = -1)
         {
-            return View(db.Products.ToList());
+            Console.WriteLine(categoryId);
+            List<Product> list;
+            if (categoryId != -1)
+            {
+                list = db.Products.Where(product => product.CategoryId == categoryId).ToList();
+            }
+            else
+            {
+                list = db.Products.ToList();
+            }
+            return View(list);
         }
 
         // GET: Products/Details/5
@@ -46,7 +57,7 @@ namespace HappyDogShop2.Controllers
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProductId,Name,Description,Price,Is_hidden,Stock_count")] Product product)
+        public ActionResult Create([Bind(Include = "ProductId,Name,Description,Price,IsHidden,StockCount,ReleasedDate,MediaTypeId,CategoryId")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -78,7 +89,7 @@ namespace HappyDogShop2.Controllers
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductId,Name,Description,Price,Is_hidden,Stock_count")] Product product)
+        public ActionResult Edit([Bind(Include = "ProductId,Name,Description,Price,IsHidden,StockCount,ReleasedDate,MediaTypeId,CategoryId")] Product product)
         {
             if (ModelState.IsValid)
             {
