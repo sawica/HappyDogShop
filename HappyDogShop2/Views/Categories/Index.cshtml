@@ -38,7 +38,7 @@
             @Html.ActionLink("Edytuj", "Edit", new { id=item.CategoryId }) |
             @Html.ActionLink("Szczegóły", "Details", new { id=item.CategoryId }) |
             @Html.ActionLink("Usuń", "Delete", new { id=item.CategoryId })
-            @Html.ActionLink("Produkty",  "Index", new { categoryId=item.CategoryId, Controller= "Products" })
+            @Html.ActionLink("Produkty",  "AdminIndex", new { categoryId=item.CategoryId, Controller= "Products" })
         </td>
     </tr>
 }
