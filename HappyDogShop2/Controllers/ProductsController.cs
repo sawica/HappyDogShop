@@ -15,8 +15,11 @@ namespace HappyDogShop2.Controllers
     {
         private MyDbContext db = new MyDbContext();
 
-        // GET: Products
-        public ActionResult Index(int categoryId = -1)
+        
+        
+        // for users:
+        
+        public ActionResult UserIndex(int categoryId = -1)
         {
             Console.WriteLine(categoryId);
             List<Product> list;
@@ -32,7 +35,37 @@ namespace HappyDogShop2.Controllers
         }
 
         // GET: Products/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult UserDetails(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Product product = db.Products.Find(id);
+            if (product == null)
+            {
+                return HttpNotFound();
+            }
+            return View(product);
+        }
+        // GET: Products
+        public ActionResult AdminIndex(int categoryId = -1)
+        {
+            Console.WriteLine(categoryId);
+            List<Product> list;
+            if (categoryId != -1)
+            {
+                list = db.Products.Where(product => product.CategoryId == categoryId).ToList();
+            }
+            else
+            {
+                list = db.Products.ToList();
+            }
+            return View(list);
+        }
+
+        // GET: Products/Details/5
+        public ActionResult AdminDetails(int? id)
         {
             if (id == null)
             {
@@ -47,7 +80,7 @@ namespace HappyDogShop2.Controllers
         }
 
         // GET: Products/Create
-        public ActionResult Create()
+        public ActionResult AdminCreate()
         {
             return View();
         }
@@ -57,20 +90,20 @@ namespace HappyDogShop2.Controllers
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProductId,Name,Description,Price,IsHidden,StockCount,ReleasedDate,MediaTypeId,CategoryId")] Product product)
+        public ActionResult AdminCreate([Bind(Include = "ProductId,Name,Description,Price,IsHidden,StockCount,ReleasedDate,MediaTypeId,CategoryId")] Product product)
         {
             if (ModelState.IsValid)
             {
                 db.Products.Add(product);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("AdminIndex");
             }
 
             return View(product);
         }
 
         // GET: Products/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult AdminEdit(int? id)
         {
             if (id == null)
             {
@@ -89,19 +122,19 @@ namespace HappyDogShop2.Controllers
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductId,Name,Description,Price,IsHidden,StockCount,ReleasedDate,MediaTypeId,CategoryId")] Product product)
+        public ActionResult AdminEdit([Bind(Include = "ProductId,Name,Description,Price,IsHidden,StockCount,ReleasedDate,MediaTypeId,CategoryId")] Product product)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(product).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("AdminIndex");
             }
             return View(product);
         }
 
         // GET: Products/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult AdminDelete(int? id)
         {
             if (id == null)
             {
@@ -123,7 +156,7 @@ namespace HappyDogShop2.Controllers
             Product product = db.Products.Find(id);
             db.Products.Remove(product);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("AdminIndex");
         }
 
         protected override void Dispose(bool disposing)
