@@ -9,6 +9,31 @@
 <p>
     @Html.ActionLink("Utwórz nowy", "Create")
 </p>
+
+<form asp-controller="User" asp-action="Index" method="get">
+
+    <p>
+        Nazwa: <input type="text" name="Name"/>
+    </p>
+    
+    <p>
+        Przedział cenowy
+    </p>
+
+    <p>
+        Kategoria: <input type="text" name="CategoryId"/>
+    </p>
+    
+    <p>
+        Promocje: <input type="hidden" name="Sale" value="false"><input type="checkbox" onclick="this.previousSibling.value=true">
+    </p>
+    
+    <p>
+        <input type="submit" value="Szukaj"/>
+    </p>
+    
+</form>
+
 <table class="table">
     <tr>
         <th>

@@ -16,18 +16,18 @@ namespace HappyDogShop2.Controllers
         private MyDbContext db = new MyDbContext();
 
         // GET: Products
-        public ActionResult Index(int categoryId = -1)
+        public ActionResult Index(int categoryId = -1, string Name = "", int Price1 = -1, int Price2 = -1, bool Sale = false)
         {
-            Console.WriteLine(categoryId);
-            List<Product> list;
-            if (categoryId != -1)
-            {
-                list = db.Products.Where(product => product.CategoryId == categoryId).ToList();
-            }
-            else
-            {
-                list = db.Products.ToList();
-            }
+            List<Product> list = db.Products.ToList();
+            
+            if (categoryId != -1) list = list.Where(product => product.CategoryId == categoryId).ToList();
+            
+            if (Name != "") list = list.Where(product => product.Name == Name).ToList();
+            
+            if (Price1 != -1 & Price2 != -1) list = list.Where(product => product.Price >= Price1 && product.Price <= Price2).ToList();
+            
+            if (Sale == true) list = list.Where(product => product.Sale != null).ToList();
+
             return View(list);
         }
 

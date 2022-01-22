@@ -1,3 +1,5 @@
+using System;
+using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
@@ -11,9 +13,22 @@ namespace HappyDogShop2.Controllers
         private MyDbContext db = new MyDbContext();
         
         // GET Users
-        public ActionResult Index()
+        public ActionResult Index(bool AllUsers=true, bool IsAdmin=false, string FirstName = "", string LastName = "", string City = "",
+            string Country = "")
         {
-            return View(db.Users.ToList());
+            List<User> list = db.Users.ToList();
+            
+            if (AllUsers != true) list = list.Where(user => user.IsAdmin == IsAdmin).ToList();
+            
+            if (FirstName != "") list = list.Where(user => user.FirstName == FirstName).ToList();
+
+            if (LastName != "") list = list.Where(user => user.LastName == LastName).ToList();
+            
+            if (City != "") list = list.Where(user => user.City == City).ToList();
+            
+            if (Country != "") list = list.Where(user => user.Country == Country).ToList();
+            
+            return View(list);        
         }
     
     
