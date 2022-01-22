@@ -26,6 +26,16 @@
         <th>
             @Html.DisplayNameFor(model => model.StockCount)
         </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ReleasedDate)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MediaTypeId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CategoryId)
+        </th>
+        
         <th></th>
     </tr>
 
@@ -45,6 +55,15 @@
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.StockCount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ReleasedDate)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MediaTypeId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CategoryId)
         </td>
         <td>
             @Html.ActionLink("Edytuj", "Edit", new { id=item.ProductId }) |

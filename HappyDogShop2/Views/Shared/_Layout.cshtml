@@ -29,10 +29,11 @@
                     <li  class="nav-item dropdown show" >
                         <a  id="admin" style="display:none; :hover {background-color: #e43e86} "  class="btn dropdown-toggle" href="#" data-toggle="dropdown">Admin</a>
                         <div class="dropdown-menu">
-                            <a >@Html.ActionLink("Kategorie", "Index", "Categories")</a>
-                            <a >@Html.ActionLink("Promocje", "Index", "Sales")</a>
-                            <a >@Html.ActionLink("Produkty", "Index", "Products")</a>
-                            <a >@Html.ActionLink("Użytkownicy", "Index", "User")</a>
+                            <a class="dropdown-item">@Html.ActionLink("Kategorie", "Index", "Categories")</a>
+                            <a class="dropdown-item">@Html.ActionLink("Promocje", "Index", "Sales")</a>
+                            <a class="dropdown-item">@Html.ActionLink("Produkty", "Index", "Products")</a>
+                            <a class="dropdown-item">@Html.ActionLink("Użytkownicy", "Index", "User")</a>
+                            <a class="dropdown-item">@Html.ActionLink("Pliki", "Index", "MediaTypes")</a>
                         </div>
                     </li>       
                     <li style="display:block" id="login">@Html.ActionLink("Login", "Index", "Login")</li>

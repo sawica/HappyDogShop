@@ -1,8 +1,7 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
-using System.Drawing.Printing;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -11,117 +10,107 @@ using HappyDogShop2.Models;
 
 namespace HappyDogShop2.Controllers
 {
-    public class ProductsController : Controller
+    public class MediaTypesController: Controller
     {
         private MyDbContext db = new MyDbContext();
 
-        // GET: Products
-        public ActionResult Index(int categoryId = -1)
+        // GET: MediaTypes
+        public ActionResult Index()
         {
-            Console.WriteLine(categoryId);
-            List<Product> list;
-            if (categoryId != -1)
-            {
-                list = db.Products.Where(product => product.CategoryId == categoryId).ToList();
-            }
-            else
-            {
-                list = db.Products.ToList();
-            }
-            return View(list);
+            return View(db.MediaTypes.ToList());
         }
 
-        // GET: Products/Details/5
+        // GET: MediaTypes/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Products.Find(id);
-            if (product == null)
+            MediaType mediaType = db.MediaTypes.Find(id);
+            if (mediaType == null)
             {
                 return HttpNotFound();
             }
-            return View(product);
+            return View(mediaType);
         }
 
-        // GET: Products/Create
+        // GET: MediaTypes/Create
         public ActionResult Create()
         {
             return View();
         }
 
-        // POST: Products/Create
+        // POST: MediaTypes/Create
         // Aby zapewnić ochronę przed atakami polegającymi na przesyłaniu dodatkowych danych, włącz określone właściwości, z którymi chcesz utworzyć powiązania.
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "ProductId,Name,Description,Price,IsHidden,StockCount,ReleasedDate,MediaTypeId,CategoryId")] Product product)
+        public ActionResult Create([Bind(Include = "SMediaTypeId,Title,ImagePath")] MediaType mediaType)
         {
             if (ModelState.IsValid)
             {
-                db.Products.Add(product);
+                db.MediaTypes.Add(mediaType);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            return View(product);
+            return View(mediaType);
         }
 
-        // GET: Products/Edit/5
+        // GET: MediaTypes/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Products.Find(id);
-            if (product == null)
+            MediaType mediaType = db.MediaTypes.Find(id);
+            if (mediaType == null)
             {
                 return HttpNotFound();
             }
-            return View(product);
+            return View(mediaType);
         }
 
-        // POST: Products/Edit/5
+        // POST: MediaTypes/Edit/5
         // Aby zapewnić ochronę przed atakami polegającymi na przesyłaniu dodatkowych danych, włącz określone właściwości, z którymi chcesz utworzyć powiązania.
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "ProductId,Name,Description,Price,IsHidden,StockCount,ReleasedDate,MediaTypeId,CategoryId")] Product product)
+        public ActionResult Edit([Bind(Include = "MediaTypeId,Title,ImagePath")] MediaType mediaType)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(product).State = EntityState.Modified;
+                db.Entry(mediaType).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            return View(product);
+            return View(mediaType);
         }
 
-        // GET: Products/Delete/5
+        // GET: MediaTypes/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Product product = db.Products.Find(id);
-            if (product == null)
+            MediaType mediaType = db.MediaTypes.Find(id);
+            if (mediaType == null)
             {
                 return HttpNotFound();
             }
-            return View(product);
+            return View(mediaType);
         }
 
-        // POST: Products/Delete/5
+        // POST: MediaTypes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            Product product = db.Products.Find(id);
-            db.Products.Remove(product);
+            MediaType mediaType = db.MediaTypes.Find(id);
+            db.MediaTypes.Remove(mediaType);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
