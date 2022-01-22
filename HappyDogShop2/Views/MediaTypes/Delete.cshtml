@@ -1,0 +1,46 @@
+@model HappyDogShop2.Models.MediaType
+
+@{
+    ViewBag.Title = "Delete";
+}
+
+<h4>Czy jesteś pewien, że chcesz usunąć ten plik?</h4>
+<div>
+    <hr style="height: 1px; background-color: #e43e86; color: #e43e86" />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.MediaTypeId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MediaTypeId)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Title)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Title)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ImagePath)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ImagePath)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Usuń" class="btn btn-default" style="margin-left: 215px; border-color: #e43e86" /> |
+            @Html.ActionLink("Wróć", "Index")
+        </div>
+    }
+</div>

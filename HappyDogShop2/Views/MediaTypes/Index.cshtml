@@ -1,0 +1,45 @@
+@model IEnumerable<HappyDogShop2.Models.MediaType>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h4>Pliki:</h4>
+
+<p>
+    @Html.ActionLink("Utwórz nowy", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.MediaTypeId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ImagePath)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.MediaTypeId)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Title)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ImagePath)
+            </td>
+            <td>
+                @Html.ActionLink("Edytuj", "Edit", new { id=item.MediaTypeId }) |
+                @Html.ActionLink("Szczegóły", "Details", new { id=item.MediaTypeId }) |
+                @Html.ActionLink("Usuń", "Delete", new { id=item.MediaTypeId })
+            </td>
+        </tr>
+    }
+
+</table>
