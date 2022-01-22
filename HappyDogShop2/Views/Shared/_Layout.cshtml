@@ -26,46 +26,37 @@
                     <li>@Html.ActionLink("O nas", "About", "Home")</li>
                     <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Rejestracja", "Create", "User")</li>
+                    <li>@Html.ActionLink("Produkty", "UserIndex", "Products")</li>
                     <li  class="nav-item dropdown show" >
                         <a  id="admin" style="display:none; :hover {background-color: #e43e86} "  class="btn dropdown-toggle" href="#" data-toggle="dropdown">Admin</a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item">@Html.ActionLink("Kategorie", "Index", "Categories")</a>
                             <a class="dropdown-item">@Html.ActionLink("Promocje", "Index", "Sales")</a>
-                            <a class="dropdown-item">@Html.ActionLink("Produkty", "Index", "Products")</a>
+                            <a class="dropdown-item">@Html.ActionLink("Produkty", "AdminIndex", "Products")</a>
                             <a class="dropdown-item">@Html.ActionLink("Użytkownicy", "Index", "User")</a>
                             <a class="dropdown-item">@Html.ActionLink("Pliki", "Index", "MediaTypes")</a>
                         </div>
                     </li>       
                     <li style="display:block" id="login">@Html.ActionLink("Login", "Index", "Login")</li>
-                    <li class = "navbar-brand" style="padding-top: 15px; padding-left:  500px" >@Session["userName"]</li>
+                    <li class = "navbar-brand" style="padding-top: 15px; padding-left:  300px" >@Session["userName"]</li>
                     <li style="display:none" id="logout">@Html.ActionLink("Wyloguj", "LogOut", "Login")</li>   
                     <script type="text/javascript">
-
-
-
-                     if (@Session["userId"] !== 0 )
-                     {
-                         console.log("zalogowano")
-                         document.getElementById('logout').style.display='block'
-                         document.getElementById('login').style.display='none'
-
-                         let isAdmin = '@Session["isAdmin"]' 
-                         if (isAdmin === 'True')
-                         {
-                            console.log("admin " + isAdmin)
-                            document.getElementById('admin').style.display='block'
-
-                         }
-                     }
-                     
-                     else 
-                     {
-                         document.getElementById('logout').style.display='none'
-                         document.getElementById('login').style.display='block'
-                         document.getElementById('admin').style.display='none'
-                     }
-                         
-
+                        if (@Session["userId"] !== 0 )
+                        {
+                           document.getElementById('logout').style.display='block'
+                           document.getElementById('login').style.display='none'
+                           let isAdmin = '@Session["isAdmin"]' 
+                           if (isAdmin === 'True')
+                           {
+                               document.getElementById('admin').style.display='block'
+                           }
+                        }
+                        else 
+                        {
+                           document.getElementById('logout').style.display='none'
+                           document.getElementById('login').style.display='block'
+                           document.getElementById('admin').style.display='none'
+                        }
                     </script>
                 </ul>
             </div>
