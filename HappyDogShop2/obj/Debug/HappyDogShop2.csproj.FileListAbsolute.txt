@@ -178,8 +178,6 @@ C:/Users/sawic/source/repos/HappyDogShop2/HappyDogShop2/obj/Debug/HappyDogShop2.
 /home/patka/RiderProjects/asp/HappyDogShop/HappyDogShop2/bin/pl/System.Web.WebPages.Deployment.resources.dll
 /home/patka/RiderProjects/asp/HappyDogShop/HappyDogShop2/bin/pl/System.Web.WebPages.Razor.resources.dll
 /home/patka/RiderProjects/asp/HappyDogShop/HappyDogShop2/obj/Debug/HappyDogShop2.csproj.CopyComplete
-/home/patka/RiderProjects/asp/HappyDogShop/HappyDogShop2/obj/Debug/HappyDogShop2.Migrations.Initial.resources
-/home/patka/RiderProjects/asp/HappyDogShop/HappyDogShop2/obj/Debug/HappyDogShop2.csproj.GenerateResource.cache
 /home/patka/RiderProjects/asp/HappyDogShop/HappyDogShop2/bin/Identity.dll
 /home/patka/RiderProjects/asp/HappyDogShop/HappyDogShop2/bin/Microsoft.Bcl.AsyncInterfaces.dll
 /home/patka/RiderProjects/asp/HappyDogShop/HappyDogShop2/bin/Microsoft.IdentityModel.Logging.dll
@@ -205,4 +203,5 @@ C:/Users/sawic/source/repos/HappyDogShop2/HappyDogShop2/obj/Debug/HappyDogShop2.
 /home/patka/RiderProjects/asp/HappyDogShop/HappyDogShop2/bin/System.Text.Json.xml
 /home/patka/RiderProjects/asp/HappyDogShop/HappyDogShop2/bin/System.Threading.Tasks.Extensions.xml
 /home/patka/RiderProjects/asp/HappyDogShop/HappyDogShop2/bin/System.ValueTuple.xml
-/home/patka/RiderProjects/asp/HappyDogShop/HappyDogShop2/obj/Debug/HappyDogShop2.Migrations.createMediaType.resources
+/home/patka/RiderProjects/asp/HappyDogShop/HappyDogShop2/obj/Debug/HappyDogShop2.Migrations.initial.resources
+/home/patka/RiderProjects/asp/HappyDogShop/HappyDogShop2/obj/Debug/HappyDogShop2.csproj.GenerateResource.cache

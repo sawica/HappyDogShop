@@ -185,13 +185,9 @@
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\202201151214318_Initial.cs" />
-    <Compile Include="Migrations\202201151214318_Initial.Designer.cs">
-      <DependentUpon>202201151214318_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\202201212122240_createMediaType.cs" />
-    <Compile Include="Migrations\202201212122240_createMediaType.Designer.cs">
-      <DependentUpon>202201212122240_createMediaType.cs</DependentUpon>
+    <Compile Include="Migrations\202201221112113_initial.cs" />
+    <Compile Include="Migrations\202201221112113_initial.Designer.cs">
+      <DependentUpon>202201221112113_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CartItem.cs" />
@@ -279,11 +275,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\202201151214318_Initial.resx">
-      <DependentUpon>202201151214318_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\202201212122240_createMediaType.resx">
-      <DependentUpon>202201212122240_createMediaType.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\202201221112113_initial.resx">
+      <DependentUpon>202201221112113_initial.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
