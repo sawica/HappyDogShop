@@ -126,4 +126,30 @@ namespace HappyDogShop2.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
+        public ActionResult EditPassword(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            User user = db.Users.Find(id);
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            return View(user);
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult EditPassword([Bind(Include = "UserId,FirstName,LastName,Username,Password,IsAdmin,PhoneNumber,Address,City,Country,ZipCode, SaleId")] User user)
+        {
+            if (ModelState.IsValid)
+            {
+                db.Entry(user).State = EntityState.Modified;
+                db.SaveChanges();
+                return RedirectToAction("Index");
+            }
+            return View(user);
+        }
 }}
