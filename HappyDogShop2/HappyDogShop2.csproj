@@ -236,6 +236,7 @@
     <Content Include="Views\MediaTypes\Index.cshtml" />
     <Content Include="Views\Products\UserDetails.cshtml" />
     <Content Include="Views\Products\UserIndex.cshtml" />
+    <Content Include="Views\Products\_ProductLayout.cshtml" />
     <Content Include="Views\User\Create.cshtml" />
     <Content Include="Views\User\Delete.cshtml" />
     <Content Include="Views\User\Details.cshtml" />
