@@ -1,3 +1,4 @@
+@using HappyDogShop2.Models
 @model IEnumerable<HappyDogShop2.Models.Product>
 
 @{
@@ -45,9 +46,20 @@
 {
     <div style="width: 80%; margin: 50px auto ; background-color: #f7e6cf; padding: 20px">
                 <h3>tu menu kategorii</h3>
-                            @foreach (var item in ViewBag.Categories)
+                            @foreach (var c in (IEnumerable<Category>)ViewData["categories"])
                             {
-                                <h2>@item.Name</h2>
+                                if (c.Parent == null)
+                                {
+                                    <h2>@c.Name</h2>
+                                    foreach (var item in (IEnumerable<Category>) ViewData["categories"])
+                                    {
+                                        if (c.CategoryId == item.ParentId)
+                                        {
+                                            <h3 style="color: #1b6d85">@item.Name</h3>
+                                        }
+                                    }
+                                }
+                           
                             }
     </div>
 }

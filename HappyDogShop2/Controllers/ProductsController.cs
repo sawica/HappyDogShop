@@ -21,8 +21,16 @@ namespace HappyDogShop2.Controllers
         
         public ActionResult UserIndex(int categoryId = -1)
         {
-            ViewBag.Categories = db.Categories.ToList();
-            
+            ViewData["categories"] = from category in db.Categories select category;
+            // ViewBag.Categories = db.Categories.ToList();
+            // foreach (var category in db.Categories)
+            // {
+            //     if (category.Parent == null)
+            //     {
+            //         ViewBag.Categories[0].add(category);
+            //     }
+            // }
+            // ViewBag.Categories[0] = db.Categories.Where(category => category.Parent == null).ToList();
             Console.WriteLine(categoryId);
             List<Product> list;
             if (categoryId != -1)
@@ -168,6 +176,21 @@ namespace HappyDogShop2.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        
+        public ActionResult _ProductLayout(string searchString = "")
+        {
+            List<Category> list = new List<Category>();
+            if (searchString != "")
+            {
+                foreach (var category1 in db.Categories.Where(category => category.Name == searchString).ToList()) list.Add(category1);
+                foreach (var category1 in db.Categories.Where(category => category.Parent.Name == searchString).ToList()) list.Add(category1);
+            }
+            else
+            {
+                list = db.Categories.ToList();
+            }
+            return View(list);
         }
     }
 }
