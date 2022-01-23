@@ -55,7 +55,7 @@ namespace HappyDogShop2.Controllers
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "SaleId,Start_date,End_date,Name,Value_in_percent")] Sale sale)
+        public ActionResult Create([Bind(Include = "SaleId,StartDate,EndDate,Name,ValueInPercent")] Sale sale)
         {
             if (ModelState.IsValid)
             {
@@ -87,7 +87,7 @@ namespace HappyDogShop2.Controllers
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "SaleId,Start_date,End_date,Name,Value_in_percent")] Sale sale)
+        public ActionResult Edit([Bind(Include = "SaleId,StartDate,EndDate,Name,ValueInPercent")] Sale sale)
         {
             if (ModelState.IsValid)
             {
