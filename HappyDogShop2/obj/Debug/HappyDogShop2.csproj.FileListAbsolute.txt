@@ -205,3 +205,4 @@ C:/Users/sawic/source/repos/HappyDogShop2/HappyDogShop2/obj/Debug/HappyDogShop2.
 /home/patka/RiderProjects/asp/HappyDogShop/HappyDogShop2/bin/System.ValueTuple.xml
 /home/patka/RiderProjects/asp/HappyDogShop/HappyDogShop2/obj/Debug/HappyDogShop2.Migrations.initial.resources
 /home/patka/RiderProjects/asp/HappyDogShop/HappyDogShop2/obj/Debug/HappyDogShop2.csproj.GenerateResource.cache
+/home/patka/RiderProjects/asp/HappyDogShop/HappyDogShop2/obj/Debug/HappyDogShop2.Migrations.orders.resources

@@ -24,5 +24,8 @@ namespace HappyDogShop2.Models
         public DbSet<Sale> Sales { get; set; }
         
         public DbSet<MediaType> MediaTypes { get; set; }
-    }
+        public DbSet<Order>  Orders { get; set; }
+        
+        public DbSet<CartItem>  CartItems { get; set; }
+	}
 }
