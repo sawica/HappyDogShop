@@ -22,15 +22,7 @@ namespace HappyDogShop2.Controllers
         public ActionResult UserIndex(int categoryId = -1)
         {
             ViewData["categories"] = from category in db.Categories select category;
-            // ViewBag.Categories = db.Categories.ToList();
-            // foreach (var category in db.Categories)
-            // {
-            //     if (category.Parent == null)
-            //     {
-            //         ViewBag.Categories[0].add(category);
-            //     }
-            // }
-            // ViewBag.Categories[0] = db.Categories.Where(category => category.Parent == null).ToList();
+            ViewData["media"] = from media in db.MediaTypes select media;
             Console.WriteLine(categoryId);
             List<Product> list;
             if (categoryId != -1)

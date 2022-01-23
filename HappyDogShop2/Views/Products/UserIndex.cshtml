@@ -1,3 +1,4 @@
+@using System.Collections
 @using HappyDogShop2.Models
 @model IEnumerable<HappyDogShop2.Models.Product>
 
@@ -45,7 +46,7 @@
 @section leftMenu
 {
     <div style="width: 80%; margin: 50px auto ; background-color: #f7e6cf; padding: 20px">
-                <h3>tu menu kategorii</h3>
+                <h2>wszystko</h2>
                             @foreach (var c in (IEnumerable<Category>)ViewData["categories"])
                             {
                                 if (c.Parent == null)
@@ -55,7 +56,21 @@
                                     {
                                         if (c.CategoryId == item.ParentId)
                                         {
-                                            <h3 style="color: #1b6d85">@item.Name</h3>
+                                            <h3 style="color: #1b6d85"> > @item.Name</h3>
+                                            foreach (var item2 in (IEnumerable<Category>) ViewData["categories"])
+                                            {
+                                                if (item.CategoryId == item2.ParentId)
+                                                {
+                                                    <h4 style="color: #e43e86">  > @item2.Name</h4>
+                                                    foreach (var item3 in (IEnumerable<Category>) ViewData["categories"])
+                                                    {
+                                                        if (item2.CategoryId == item3.ParentId)
+                                                        {
+                                                            <h5 style="color: #3c3c3c">   > @item3.Name</h5>
+                                                        }
+                                                    }
+                                                }
+                                            }
                                         }
                                     }
                                 }
@@ -65,52 +80,31 @@
 }
 @section productList {
 
-    <div style="width: 70%; margin: 50px 0 auto auto; display: grid; grid-template-columns: 200px 200px 200px;
-                                             grid-template-rows: 200px; 
+    <div style="width: 70%; margin: 50px 0 auto auto; display: grid; grid-template-columns: 250px 250px 250px;
+                                             grid-template-rows: 400px; 
                                              column-gap: 10px;
                                              row-gap: 15px; justify-items: center">
         @foreach (var item in Model)
                     {
         
-                        <div style="height: 200px; width: 200px; text-align: center">
+                        <div style="text-align: center; padding: 10px">
                             <h2>
                                 @item.Name
                             </h2>
-                            <img src="@item.MediaType"/>
+                            @foreach (var media in (IEnumerable<MediaType>) ViewData["media"])
+                            {
+                                if (@item.MediaTypeId == media.MediaTypeId)
+                                {
+                                    <img style="height: 150px" src="@media.ImagePath"/>
+                                }
+                            }
+
                             <h3>
                                 cena: @item.Price
                             </h3>
                         </div>
         
                     }
-        @foreach (var item in Model)
-                                {
-                    
-                                    <div style="height: 200px; width: 200px; text-align: center">
-                                        <h2>
-                                            @item.Name
-                                        </h2>
-                                        <img src="@item.MediaType"/>
-                                        <h3>
-                                            cena: @item.Price
-                                        </h3>
-                                    </div>
-                    
-                                }
-        @foreach (var item in Model)
-                                {
-                    
-                                    <div style="height: 200px; width: 200px; text-align: center">
-                                        <h2>
-                                            @item.Name
-                                        </h2>
-                                        <img src="@item.MediaType"/>
-                                        <h3>
-                                            cena: @item.Price
-                                        </h3>
-                                    </div>
-                    
-                                }
     </div>
 }
 
