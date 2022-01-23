@@ -21,8 +21,6 @@ namespace HappyDogShop2.Models
         public bool IsHidden { get; set; }
         [Required(ErrorMessage = "To pole jest wymagane"), Display(Name = "Stan magazynowy")]
         public int StockCount { get; set; }
-        [Required(ErrorMessage = "To pole jest wymagane"), Display(Name = "Data dodania")]
-        public int ReleasedDate { get; set; }
         
         
         [Required(ErrorMessage = "To pole jest wymagane"), Display(Name = "Obraz ")]

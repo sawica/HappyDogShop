@@ -191,6 +191,7 @@
     <Compile Include="Migrations\202201221112113_initial.Designer.cs">
       <DependentUpon>202201221112113_initial.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202201231255058_deleteProductDate.cs" />
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\Category.cs" />
