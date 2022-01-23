@@ -65,22 +65,22 @@
         <h2>kategorie</h2>
         @foreach (var c in (IEnumerable<Category>)ViewData["categories"])
         {
-        if (c.Parent == null)
+        if (c.Parent == null && c.IsHidden == false)
         {
            <h2>@c.Name</h2>
            foreach (var item in (IEnumerable<Category>) ViewData["categories"])
            {
-               if (c.CategoryId == item.ParentId)
+               if (c.CategoryId == item.ParentId && item.IsHidden == false)
                {
                <h3 style="color: #1b6d85"> > @item.Name</h3>
                foreach (var item2 in (IEnumerable<Category>) ViewData["categories"])
                {
-                   if (item.CategoryId == item2.ParentId)
+                   if (item.CategoryId == item2.ParentId && item2.IsHidden == false)
                    {
                        <h4 style="color: #e43e86">  > @item2.Name</h4>
                        foreach (var item3 in (IEnumerable<Category>) ViewData["categories"])
                        {
-                           if (item2.CategoryId == item3.ParentId)
+                           if (item2.CategoryId == item3.ParentId && item3.IsHidden == false)
                            {
                                <h5 style="color: #3c3c3c">   > @item3.Name</h5>
                            }
@@ -101,26 +101,27 @@
                                              column-gap: 10px;
                                              row-gap: 15px; justify-items: center">
         @foreach (var item in Model)
+        {
+            if (item.IsHidden == false && item.Category.IsHidden == false )
+            {
+                <div style="text-align: center; padding: 10px">
+                    <h2>
+                        @item.Name
+                    </h2>
+                    @foreach (var media in (IEnumerable<MediaType>) ViewData["media"])
                     {
-        
-                        <div style="text-align: center; padding: 10px">
-                            <h2>
-                                @item.Name
-                            </h2>
-                            @foreach (var media in (IEnumerable<MediaType>) ViewData["media"])
-                            {
-                                if (@item.MediaTypeId == media.MediaTypeId)
-                                {
-                                    <img style="height: 150px" src="@media.ImagePath"/>
-                                }
-                            }
-
-                            <h3>
-                                cena: @item.Price
-                            </h3>
-                        </div>
-        
+                        if (@item.MediaTypeId == media.MediaTypeId)
+                        {
+                            <img style="height: 150px" src="@media.ImagePath"/>
+                        }
                     }
+                
+                    <h3>
+                        cena: @item.Price
+                    </h3>
+                </div>
+            }
+        }
     </div>
 }
 

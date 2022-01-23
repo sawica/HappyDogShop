@@ -41,7 +41,7 @@ namespace HappyDogShop2.Controllers
             Session.Abandon();
            // Session["admin"] = 0;
             
-            return RedirectToAction("Index","Login");
+            return RedirectToAction("Index","Home");
         }
 
 

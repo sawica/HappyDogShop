@@ -56,10 +56,12 @@ namespace HappyDogShop2.Controllers
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "CategoryId,ParentId,Name,Is_hidden")] Category category)
+        public ActionResult Create([Bind(Include = "CategoryId,ParentId,Name,IsHidden")] Category category)
         {
             if (ModelState.IsValid)
             {
+                if (category.ParentId > 0) category.IsHidden = db.Categories.Find(category.ParentId).IsHidden;
+                
                 db.Categories.Add(category);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -88,11 +90,17 @@ namespace HappyDogShop2.Controllers
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "CategoryId,ParentId,Name,Is_hidden")] Category category)
+        public ActionResult Edit([Bind(Include = "CategoryId,ParentId,Name,IsHidden")] Category category)
         {
             if (ModelState.IsValid)
-            {
-                db.Entry(category).State = EntityState.Modified;
+            {   db.Entry(category).State = EntityState.Modified;
+                
+                foreach (var cat in db.Categories.ToList())
+                {
+                    if (cat.ParentId > 0) cat.IsHidden = cat.Parent.IsHidden;
+                    db.Entry(cat).State = EntityState.Modified;
+                }
+                
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
