@@ -6,6 +6,7 @@
     ViewBag.Title = "UserIndex";
     Layout = "_ProductLayout.cshtml";
     ViewBag.NewProducts = Model.OrderByDescending(product => product.ProductId).Take(10).ToList();
+    
 }
 
 <h4>Produkty:</h4>
@@ -56,7 +57,7 @@
         <h2>promocje</h2>
         @foreach(var product in Model)
         {
-            if (product.SaleId != null)
+            if (product.SaleId != null && product.Sale.StartDate <= @DateTime.Now && product.Sale.EndDate >= @DateTime.Now)
             {
                 <h3 style="color: #1b6d85"> @product.Name</h3>
             }
