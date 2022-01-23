@@ -10,6 +10,7 @@ namespace HappyDogShop2.Models
     }
     public class Order
     {
+        [Key]
         public int OrderId { get; set; }
         
         [ForeignKey("User"), Required(ErrorMessage = "To pole jest wymagane")]

@@ -181,6 +181,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\MediaTypesController.cs" />
+    <Compile Include="Controllers\OrderController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\SalesController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -192,6 +193,10 @@
       <DependentUpon>202201221112113_initial.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\202201231255058_deleteProductDate.cs" />
+    <Compile Include="Migrations\202201231522295_orders.cs" />
+    <Compile Include="Migrations\202201231522295_orders.Designer.cs">
+      <DependentUpon>202201231522295_orders.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\Category.cs" />
@@ -235,6 +240,11 @@
     <Content Include="Views\MediaTypes\Details.cshtml" />
     <Content Include="Views\MediaTypes\Edit.cshtml" />
     <Content Include="Views\MediaTypes\Index.cshtml" />
+    <Content Include="Views\Order\Create.cshtml" />
+    <Content Include="Views\Order\Delete.cshtml" />
+    <Content Include="Views\Order\Details.cshtml" />
+    <Content Include="Views\Order\Edit.cshtml" />
+    <Content Include="Views\Order\Index.cshtml" />
     <Content Include="Views\Products\UserDetails.cshtml" />
     <Content Include="Views\Products\UserIndex.cshtml" />
     <Content Include="Views\Products\_ProductLayout.cshtml" />
@@ -289,6 +299,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202201221112113_initial.resx">
       <DependentUpon>202201221112113_initial.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201231522295_orders.resx">
+      <DependentUpon>202201231522295_orders.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
