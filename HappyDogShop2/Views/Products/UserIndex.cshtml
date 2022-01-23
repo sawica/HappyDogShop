@@ -46,36 +46,38 @@
 @section leftMenu
 {
     <div style="width: 80%; margin: 50px auto ; background-color: #f7e6cf; padding: 20px">
-                <h2>wszystko</h2>
-                            @foreach (var c in (IEnumerable<Category>)ViewData["categories"])
-                            {
-                                if (c.Parent == null)
-                                {
-                                    <h2>@c.Name</h2>
-                                    foreach (var item in (IEnumerable<Category>) ViewData["categories"])
-                                    {
-                                        if (c.CategoryId == item.ParentId)
-                                        {
-                                            <h3 style="color: #1b6d85"> > @item.Name</h3>
-                                            foreach (var item2 in (IEnumerable<Category>) ViewData["categories"])
-                                            {
-                                                if (item.CategoryId == item2.ParentId)
-                                                {
-                                                    <h4 style="color: #e43e86">  > @item2.Name</h4>
-                                                    foreach (var item3 in (IEnumerable<Category>) ViewData["categories"])
-                                                    {
-                                                        if (item2.CategoryId == item3.ParentId)
-                                                        {
-                                                            <h5 style="color: #3c3c3c">   > @item3.Name</h5>
-                                                        }
-                                                    }
-                                                }
-                                            }
-                                        }
-                                    }
-                                }
-                           
-                            }
+        <h2>wszystko</h2>
+        <h2>nowości</h2>
+        <h2>promocje</h2>
+        @foreach (var c in (IEnumerable<Category>)ViewData["categories"])
+        {
+        if (c.Parent == null)
+        {
+           <h2>@c.Name</h2>
+           foreach (var item in (IEnumerable<Category>) ViewData["categories"])
+           {
+               if (c.CategoryId == item.ParentId)
+               {
+               <h3 style="color: #1b6d85"> > @item.Name</h3>
+               foreach (var item2 in (IEnumerable<Category>) ViewData["categories"])
+               {
+                   if (item.CategoryId == item2.ParentId)
+                   {
+                       <h4 style="color: #e43e86">  > @item2.Name</h4>
+                       foreach (var item3 in (IEnumerable<Category>) ViewData["categories"])
+                       {
+                           if (item2.CategoryId == item3.ParentId)
+                           {
+                               <h5 style="color: #3c3c3c">   > @item3.Name</h5>
+                           }
+                       }
+                   }
+               }
+               }
+           }
+        }
+    }
+        
     </div>
 }
 @section productList {
