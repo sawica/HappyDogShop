@@ -1,0 +1,53 @@
+@model IEnumerable<HappyDogShop2.Models.CartItem>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h4>Promocje:</h4>
+
+<p>
+    @Html.ActionLink("Utwórz nowe", "Create")
+</p>
+
+<form asp-controller="CartItem" asp-action="Index" method="get">
+    <p>
+        Wyszukaj: <input type="text" name="OrderId"/>
+        <input type="submit" value="Szukaj"/>
+    </p>
+</form>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Quantity)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductId)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.OrderId)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Quantity)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ProductId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.OrderId)
+        </td>
+        <td>
+            @Html.ActionLink("Edytuj", "Edit", new { id=item.ItemId }) |
+            @Html.ActionLink("Szczegóły", "Details", new { id=item.ItemId }) |
+            @Html.ActionLink("Usuń", "Delete", new { id=item.ItemId })
+        </td>
+    </tr>
+}
+
+</table>

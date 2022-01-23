@@ -177,6 +177,7 @@
     <Compile Include="App_Start\BundleConfig.cs" />
     <Compile Include="App_Start\FilterConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
+    <Compile Include="Controllers\CartItemController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
@@ -234,6 +235,11 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Views\CartItem\Create.cshtml" />
+    <Content Include="Views\CartItem\Delete.cshtml" />
+    <Content Include="Views\CartItem\Details.cshtml" />
+    <Content Include="Views\CartItem\Edit.cshtml" />
+    <Content Include="Views\CartItem\Index.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\MediaTypes\Create.cshtml" />
     <Content Include="Views\MediaTypes\Delete.cshtml" />
