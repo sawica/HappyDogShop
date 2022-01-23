@@ -38,13 +38,20 @@
                         </div>
                     </li>       
                     <li style="display:block" id="login">@Html.ActionLink("Login", "Index", "Login")</li>
-                    <li class = "navbar-brand" style="padding-top: 15px; padding-left:  300px" >@Session["userName"]</li>
+                    <li class="nav-item dropdown show" style="margin-right: 0">
+                        <a id="user" style="display:none; padding-top: 15px; margin-left:  300px" class="navbar-brand btn dropdown-toggle" href="#" data-toggle="dropdown">@Session["userName"]</a>
+                        <div class="dropdown-menu-right dropdown-menu" >
+                            <a class="dropdown-item">@Html.ActionLink("Edytuj profil", "Edit", "User", new { id=@Session["UserId"] }, "" )</a>
+                            <a class="dropdown-item">@Html.ActionLink("Twoje zamówienia", "", "")</a>
+                        </div>
+                    </li>       
                     <li style="display:none" id="logout">@Html.ActionLink("Wyloguj", "LogOut", "Login")</li>   
                     <script type="text/javascript">
                         if (@Session["userId"] !== 0 )
                         {
                            document.getElementById('logout').style.display='block'
                            document.getElementById('login').style.display='none'
+                           document.getElementById('user').style.display='block'
                            let isAdmin = '@Session["isAdmin"]' 
                            if (isAdmin === 'True')
                            {
@@ -56,6 +63,7 @@
                            document.getElementById('logout').style.display='none'
                            document.getElementById('login').style.display='block'
                            document.getElementById('admin').style.display='none'
+                           document.getElementById('user').style.display='none'
                         }
                     </script>
                 </ul>

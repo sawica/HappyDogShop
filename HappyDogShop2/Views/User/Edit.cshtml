@@ -53,7 +53,7 @@
             </div>
         </div>
         
-        <div class="form-group">
+        <div id="editAdmin" class="form-group" style="display: none">
             @Html.LabelFor(model => model.IsAdmin, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 <div class="checkbox">
@@ -118,7 +118,7 @@
             </div>
         </div>
         
-        <div class="form-group">
+        <div id="editSale" class="form-group" style="display: none">
                     @Html.LabelFor(model => model.SaleId, htmlAttributes: new { @class = "control-label col-md-2" })
                     <div class="col-md-10">
                         <div class="checkbox">
@@ -140,7 +140,14 @@
 <div>
     @Html.ActionLink("Wróć", "Index")
 </div>
-
+<script type="text/javascript">
+    let isAdmin = '@Session["isAdmin"]'
+    if (isAdmin === 'True')
+    {
+        document.getElementById("editSale").style.display='block'
+        document.getElementById('editAdmin').style.display='block'
+    }
+</script>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
 }
