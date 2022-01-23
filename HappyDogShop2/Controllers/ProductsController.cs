@@ -21,6 +21,8 @@ namespace HappyDogShop2.Controllers
         
         public ActionResult UserIndex(int categoryId = -1)
         {
+            ViewBag.Categories = db.Categories.ToList();
+            
             Console.WriteLine(categoryId);
             List<Product> list;
             if (categoryId != -1)
@@ -90,7 +92,7 @@ namespace HappyDogShop2.Controllers
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AdminCreate([Bind(Include = "ProductId,Name,Description,Price,IsHidden,StockCount,ReleasedDate,MediaTypeId,CategoryId")] Product product)
+        public ActionResult AdminCreate([Bind(Include = "ProductId,Name,Description,Price,IsHidden,StockCount,MediaTypeId,CategoryId")] Product product)
         {
             if (ModelState.IsValid)
             {
@@ -122,7 +124,7 @@ namespace HappyDogShop2.Controllers
         // Aby uzyskać więcej szczegółów, zobacz https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult AdminEdit([Bind(Include = "ProductId,Name,Description,Price,IsHidden,StockCount,ReleasedDate,MediaTypeId,CategoryId")] Product product)
+        public ActionResult AdminEdit([Bind(Include = "ProductId,Name,Description,Price,IsHidden,StockCount,MediaTypeId,CategoryId")] Product product)
         {
             if (ModelState.IsValid)
             {

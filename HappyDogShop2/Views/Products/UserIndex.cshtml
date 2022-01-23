@@ -45,7 +45,7 @@
 {
     <div style="width: 80%; margin: 50px auto ; background-color: #f7e6cf; padding: 20px">
                 <h3>tu menu kategorii</h3>
-                            @foreach (var item in Model)
+                            @foreach (var item in ViewBag.Categories)
                             {
                                 <h2>@item.Name</h2>
                             }
