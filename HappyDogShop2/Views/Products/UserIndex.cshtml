@@ -5,6 +5,7 @@
 @{
     ViewBag.Title = "UserIndex";
     Layout = "_ProductLayout.cshtml";
+    ViewBag.NewProducts = Model.OrderByDescending(product => product.ProductId).Take(10).ToList();
 }
 
 <h4>Produkty:</h4>
@@ -47,6 +48,10 @@
 {
     <div style="width: 80%; margin: 50px auto ; background-color: #f7e6cf; padding: 20px">
         <h2>wszystko</h2>
+        @foreach(var product in ViewBag.NewProducts)
+        {
+            <h3 style="color: #1b6d85"> @product.Name</h3>
+        }
         <h2>nowości</h2>
         <h2>promocje</h2>
         @foreach (var c in (IEnumerable<Category>)ViewData["categories"])
