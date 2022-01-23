@@ -54,6 +54,14 @@
             <h3 style="color: #1b6d85"> @product.Name</h3>
         }
         <h2>promocje</h2>
+        @foreach(var product in Model)
+        {
+            if (product.SaleId != null)
+            {
+                <h3 style="color: #1b6d85"> @product.Name</h3>
+            }
+        }
+        <h2>kategorie</h2>
         @foreach (var c in (IEnumerable<Category>)ViewData["categories"])
         {
         if (c.Parent == null)
