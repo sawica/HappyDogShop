@@ -1,0 +1,49 @@
+@{
+           var customerName = Request["customerName"];
+           var customerEmail = Request["customerEmail"]; 
+           var customerRequest = Request["customerRequest"];
+           var errorMessage = "";
+           var debuggingFlag = false;
+           try {
+               // Initialize WebMail helper
+               WebMail.SmtpServer = "smtp.gmail.com.";
+               WebMail.SmtpPort = 587;
+               WebMail.UserName = "happydogshop2022@gmail.com";
+               WebMail.Password = "oguvqpleisdmpgnu";
+               WebMail.From = "happydogshop2022@gmail.com";
+       
+               // Send email
+               WebMail.Send(to: customerEmail,
+                   subject: "Formularz kontaktowy od - " + customerName,
+                   body: customerRequest
+               );
+           }
+           catch (Exception ex ) {
+               errorMessage = ex.Message;
+           }
+}
+
+<div>
+     <title>Request for Assistance</title>
+           
+             <p>Sorry to hear that you are having trouble, <b>@customerName</b>.</p>
+               @if(errorMessage == ""){
+                 <p>An email message has been sent to our customer service
+                    department regarding the following problem:</p>
+                 <p><b>@customerRequest</b></p>
+               }
+               else{
+                   <p><b>The email was <em>not</em> sent.</b></p>
+                   <p>Please check that the code in the ProcessRequest page has 
+                      correct settings for the SMTP server name, a user name, 
+                      a password, and a "from" address.
+                   </p>
+                   if(debuggingFlag){
+                       <p>The following error was reported:</p>
+                       <p><em>@errorMessage</em></p>
+                   }
+               }
+</div>
+     
+        
+       
