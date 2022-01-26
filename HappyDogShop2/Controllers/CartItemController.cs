@@ -129,5 +129,24 @@ namespace HappyDogShop2.Controllers
             }
             base.Dispose(disposing);
         }
+
+        public ActionResult UserIndex(int OrderId = -1)
+        {
+            ViewData["categories"] = from category in db.Categories select category;
+            ViewData["media"] = from media in db.MediaTypes select media;
+            ViewData["products"] = from product in db.Products select product;
+                
+            
+            List<CartItem> list= new List<CartItem>();
+            if (OrderId != -1)
+            {
+                list = db.CartItems.Where(cartItem => cartItem.OrderId == OrderId).ToList();
+            }
+            else
+            {
+                list = db.CartItems.ToList();
+            }
+            return View(list);
+        }
     }
 }
