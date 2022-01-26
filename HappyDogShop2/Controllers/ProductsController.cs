@@ -50,10 +50,16 @@ namespace HappyDogShop2.Controllers
             }
             return View(product);
         }
+        
         // GET: Products
         public ActionResult AdminIndex(int categoryId = -1, string Name = "", int Price1 = -1, int Price2 = -1, bool Sale = false)
         {
             List<Product> list = db.Products.ToList();
+            ViewBag.min = db.Products.Min(product => product.Price);
+            ViewBag.max = db.Products.Max(product => product.Price);
+            
+            Console.WriteLine(ViewBag.min);
+            Console.WriteLine(ViewBag.max);
             
             if (categoryId != -1) list = list.Where(product => product.CategoryId == categoryId).ToList();
             
@@ -84,6 +90,14 @@ namespace HappyDogShop2.Controllers
         // GET: Products/Create
         public ActionResult AdminCreate()
         {
+            ViewData["categories"] = from category in db.Categories select category;
+            ViewData["media"] = from media in db.MediaTypes select media;
+            List<SelectListItem> categoryList = new List<SelectListItem>();
+            foreach (var category in db.Categories)
+            {
+                categoryList.Add(new SelectListItem{ Text = category.Name, Value = category.CategoryId.ToString()});
+            }
+            ViewData["categoriesList"] = categoryList;
             return View();
         }
 
