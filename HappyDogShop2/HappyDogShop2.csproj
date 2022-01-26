@@ -198,6 +198,10 @@
     <Compile Include="Migrations\202201231522295_orders.Designer.cs">
       <DependentUpon>202201231522295_orders.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202201262128228_price.cs" />
+    <Compile Include="Migrations\202201262128228_price.Designer.cs">
+      <DependentUpon>202201262128228_price.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\Category.cs" />
@@ -313,6 +317,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202201231522295_orders.resx">
       <DependentUpon>202201231522295_orders.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201262128228_price.resx">
+      <DependentUpon>202201262128228_price.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
