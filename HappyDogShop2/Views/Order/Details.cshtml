@@ -1,3 +1,4 @@
+@using HappyDogShop2.Models
 @model HappyDogShop2.Models.Order
 
 @{
@@ -35,8 +36,13 @@
         </dd>
 
     </dl>
-</div>
-<p>
-    @Html.ActionLink("Edytuj", "Edit", new { id = Model.OrderId}) |
+    Produkty:
+    @foreach (var item in (IEnumerable<CartItem>) ViewData["cartItems"]){
+               <h3 style="color: #1b6d85"> @item.Product.Name</h3>
+           }
+   
+</div> 
+
+<p> 
     @Html.ActionLink("Wróć", "Index")
 </p>

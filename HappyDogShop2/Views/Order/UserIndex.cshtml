@@ -1,0 +1,47 @@
+@model IEnumerable<HappyDogShop2.Models.Order>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h4>Zamówienia:</h4>
+
+<p>
+    Mozna dac tez liczbe produktow zy cos a dopiero w szczegolach ich liste
+</p>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.AmountPaid) 
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Status)
+        </th>
+        <th>
+            Liczba produktów (nie działa)
+        </th>
+        
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.AmountPaid) zł
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CartItems.Count)
+            </td>
+            <td>
+                @Html.ActionLink("Szczegóły", "Details", new { id=item.OrderId }) |
+                @Html.ActionLink("Zamów ponownie", "OrderAgain", new { id=item.OrderId }) |
+                
+            </td>
+        </tr>
+    }
+
+</table>

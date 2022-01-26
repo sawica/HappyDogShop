@@ -46,13 +46,21 @@
     </p>
     
     <p>
+        Na stanie: <input type="hidden" name="InStock" value="true"><input type="checkbox" checked="checked" onclick="this.previousSibling.value=false">
+    </p>
+    
+    <p>
         <input type="submit" value="Szukaj"/>
     </p>
+    
     
 </form>
 
 <table class="table">
     <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ProductId)
+        </th>
         <th>
             @Html.DisplayNameFor(model => model.Name)
         </th>
@@ -84,6 +92,9 @@
 @foreach (var item in Model) {
     <tr>
         <td>
+            @Html.DisplayFor(modelItem => item.ProductId)
+        </td>
+        <td>
             @Html.DisplayFor(modelItem => item.Name)
         </td>
         <td>
@@ -108,9 +119,9 @@
             @Html.DisplayFor(modelItem => item.SaleId)
         </td>
         <td>
-            @Html.ActionLink("Edytuj", "AdminEdit", new { id=item.ProductId }) |
-            @Html.ActionLink("Szczegóły", "AdminDetails", new { id=item.ProductId }) |
-            @Html.ActionLink("Usuń", "AdminDelete", new { id=item.ProductId })
+            @Html.ActionLink("Edytuj", "AdminEdit", new {id = item.ProductId}) |
+            @Html.ActionLink("Szczegóły", "AdminDetails", new {id = item.ProductId}) |
+            @Html.ActionLink("Usuń", "AdminDelete", new {id = item.ProductId})
         </td>
     </tr>
 }

@@ -46,7 +46,7 @@
                             <a class="dropdown-item">@Html.ActionLink("Informacje", "Details", "User", new { id=@Session["UserId"] }, "" )</a>
                             <a class="dropdown-item">@Html.ActionLink("Edytuj profil", "Edit", "User", new { id=@Session["UserId"] }, "" )</a>
                             <a class="dropdown-item">@Html.ActionLink("Zmień hasło", "EditPassword", "User", new { id=@Session["UserId"] }, "" )</a>
-                            <a class="dropdown-item">@Html.ActionLink("Twoje zamówienia", "", "")</a>
+                            <a class="dropdown-item">@Html.ActionLink("Twoje zamówienia", "UserIndex", "Order", new { UserId=@Session["UserId"] }, "" )</a>
                         </div>
                     </li>       
                     <li style="display:none" id="logout">@Html.ActionLink("Wyloguj", "LogOut", "Login")</li>   

@@ -25,6 +25,14 @@ namespace HappyDogShop2.Controllers
             }
             return View(list);
         }
+        
+        public ActionResult UserIndex(int UserId)
+        {
+            List<Order> list= new List<Order>();
+            list = db.Orders.Where(order => order.UserId == UserId).ToList();
+            
+            return View(list);
+        }
 
         // GET: Orders/Details/5
         public ActionResult Details(int? id)
@@ -38,6 +46,7 @@ namespace HappyDogShop2.Controllers
             {
                 return HttpNotFound();
             }
+            ViewData["cartItems"] = db.CartItems.Where(item => item.Order.OrderId == order.OrderId).ToList();
             return View(order);
         }
 
@@ -128,6 +137,11 @@ namespace HappyDogShop2.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+
+        public ActionResult OrderAgain(int id)
+        {
+            throw new System.NotImplementedException();
         }
     }
 }
