@@ -1,4 +1,6 @@
-﻿@model HappyDogShop2.Models.Product
+﻿@using System.Collections
+@using HappyDogShop2.Models
+@model HappyDogShop2.Models.Product
 
 @{
     ViewBag.Title = "Create";
@@ -66,8 +68,11 @@
         <div class="form-group">
             @Html.LabelFor(model => model.CategoryId, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.CategoryId, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.CategoryId, "", new { @class = "text-danger" })
+                @* @Html.DropDownList("selectCategory", ViewData["categoriesList"] as List<SelectListItem>, new {htmlAttributes = new {@class = "form-control"}}) *@
+                @Html.DropDownListFor(model => model.CategoryId, ViewData["categoriesList"] as List<SelectListItem>, new {htmlAttributes = new {@class = "form-control"}})
+                @* @Html.DropDownList("selectCategory", new SelectList((IEnumerable)ViewData["categoriesList"]), "kategorie",) *@
+                @* @Html.EditorFor(model => model.CategoryId, new {htmlAttributes = new {@class = "form-control"}}) *@
+                @Html.ValidationMessageFor(model => model.CategoryId, "", new {@class = "text-danger"})
             </div>
         </div>
         
