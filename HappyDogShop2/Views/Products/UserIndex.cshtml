@@ -50,39 +50,40 @@
     <div style="width: 80%; margin: 50px auto ; background-color: #f7e6cf; padding: 20px">
         <h2>wszystko</h2>
         <h2>nowości</h2>
-        @foreach(var product in ViewBag.NewProducts)
-        {
-            <h3 style="color: #1b6d85"> @product.Name</h3>
-        }
+        @* <h2>@Html.ActionLink("nowości", "UserIndex", new { id = Model.ProductId } }, "")</h2> *@
+        @* @foreach(var product in ViewBag.NewProducts) *@
+        @* { *@
+        @*     <h3 style="color: #1b6d85"> @product.Name</h3> *@
+        @* } *@
         <h2>promocje</h2>
-        @foreach(var product in Model)
-        {
-            if (product.SaleId != null && product.Sale.StartDate <= @DateTime.Now && product.Sale.EndDate >= @DateTime.Now)
-            {
-                <h3 style="color: #1b6d85"> @product.Name</h3>
-            }
-        }
+        @* @foreach(var product in Model) *@
+        @* { *@
+        @*     if (product.SaleId != null && product.Sale.StartDate <= @DateTime.Now && product.Sale.EndDate >= @DateTime.Now) *@
+        @*     { *@
+        @*         <h3 style="color: #1b6d85"> @product.Name</h3> *@
+        @*     } *@
+        @* } *@
         <h2>kategorie</h2>
         @foreach (var c in (IEnumerable<Category>)ViewData["categories"])
         {
         if (c.Parent == null && c.IsHidden == false)
         {
-           <h2>@c.Name</h2>
+            <h2>@Html.ActionLink(@c.Name, "UserIndex", new { id = c.CategoryId })</h2>
            foreach (var item in (IEnumerable<Category>) ViewData["categories"])
            {
                if (c.CategoryId == item.ParentId && item.IsHidden == false)
                {
-               <h3 style="color: #1b6d85"> > @item.Name</h3>
+               <h3 style="color: #1b6d85"> > @Html.ActionLink(@item.Name, "UserIndex", new { id = item.CategoryId })</h3>
                foreach (var item2 in (IEnumerable<Category>) ViewData["categories"])
                {
                    if (item.CategoryId == item2.ParentId && item2.IsHidden == false)
                    {
-                       <h4 style="color: #e43e86">  > @item2.Name</h4>
+                       <h4 style="color: #e43e86">  > @Html.ActionLink(@item2.Name, "UserIndex", new { id = item2.CategoryId })</h4>
                        foreach (var item3 in (IEnumerable<Category>) ViewData["categories"])
                        {
                            if (item2.CategoryId == item3.ParentId && item3.IsHidden == false)
                            {
-                               <h5 style="color: #3c3c3c">   > @item3.Name</h5>
+                               <h5 style="color: #3c3c3c">   > @Html.ActionLink(@item3.Name, "UserIndex", new { id = item3.CategoryId })</h5>
                            }
                        }
                    }
@@ -119,6 +120,10 @@
                     <h3>
                         cena: @item.Price
                     </h3>
+       
+                    <input type="submit" value="Dodaj do koszyka" class="btn btn-default" style=" border-color: #e43e86" onclick=""/>
+                    @* <button>@Html.ActionLink("Add to cart", "AddToCart", "Orders", new { id = Model.ProductId }, "")</button> *@
+                    <button class="btn btn-default" style=" border-color: #e43e86">Dodaj do koszyka</button>
                 </div>
             }
         }

@@ -28,6 +28,7 @@ namespace HappyDogShop2.Controllers
             if (categoryId != -1)
             {
                 list = db.Products.Where(product => product.CategoryId == categoryId).ToList();
+                Console.WriteLine("poszla kategoria");
             }
             else
             {
