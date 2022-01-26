@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -135,17 +136,28 @@ namespace HappyDogShop2.Controllers
             ViewData["categories"] = from category in db.Categories select category;
             ViewData["media"] = from media in db.MediaTypes select media;
             ViewData["products"] = from product in db.Products select product;
-                
+            ViewBag.orderId = OrderId;
+            float sum = 0;
             
             List<CartItem> list= new List<CartItem>();
-            if (OrderId != -1)
+            
+                if (OrderId != -1)
             {
+                
                 list = db.CartItems.Where(cartItem => cartItem.OrderId == OrderId).ToList();
             }
             else
             {
                 list = db.CartItems.ToList();
             }
+                
+            foreach (CartItem item in list)
+            {
+                Product product = db.Products.Find(item.ProductId);
+                sum += product.Price;
+            }
+
+            ViewBag.sum = sum;
             return View(list);
         }
     }

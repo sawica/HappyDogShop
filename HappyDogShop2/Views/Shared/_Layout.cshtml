@@ -27,8 +27,9 @@
                     <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Rejestracja", "Create", "User")</li>
                     <li>@Html.ActionLink("Produkty", "UserIndex", "Products")</li>
+                    <li>@Html.ActionLink("Koszyk", "UserIndex", "CartItem")</li>
                     <li  class="nav-item dropdown show" >
-                        <a  id="admin" style="display:none; :hover {background-color: #e43e86} "  class="btn dropdown-toggle" href="#" data-toggle="dropdown">Admin</a>
+                        <a  id="admin" style="display:none"  class="btn dropdown-toggle" href="#" data-toggle="dropdown">Admin</a>
                         <div class="dropdown-menu">
                             <a class="dropdown-item">@Html.ActionLink("Kategorie", "Index", "Categories")</a>
                             <a class="dropdown-item">@Html.ActionLink("Promocje", "Index", "Sales")</a>
@@ -41,7 +42,7 @@
                     </li>       
                     <li style="display:block" id="login">@Html.ActionLink("Login", "Index", "Login")</li>
                     <li class="nav-item dropdown show" style="margin-right: 0">
-                        <a id="user" style="display:none; padding-top: 15px; margin-left:  300px" class="navbar-brand btn dropdown-toggle" href="#" data-toggle="dropdown">@Session["userName"]</a>
+                        <a id="user" style="display:none; " class="navbar-brand btn dropdown-toggle" href="#" data-toggle="dropdown">@Session["userName"]</a>
                         <div class="dropdown-menu-right dropdown-menu" >
                             <a class="dropdown-item">@Html.ActionLink("Informacje", "Details", "User", new { id=@Session["UserId"] }, "" )</a>
                             <a class="dropdown-item">@Html.ActionLink("Edytuj profil", "Edit", "User", new { id=@Session["UserId"] }, "" )</a>
