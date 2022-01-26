@@ -71,6 +71,14 @@ function showSlides() {
 </div>
 
 <div>
+    @foreach(var product in ViewBag.BestProducts)
+    {
+        <h3 style="color: #1b6d85"> @product.Name</h3>
+    }
+    
+</div>
+
+<div>
     <h2>Submit Email Request for Assistance</h2>
       <form method="post" action="ProcessRequest.cshtml">
         <div>

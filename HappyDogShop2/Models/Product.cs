@@ -16,7 +16,7 @@ namespace HappyDogShop2.Models
         [Required(ErrorMessage = "To pole jest wymagane"), StringLength(60, MinimumLength = 3), Display(Name = "Opis")]
         public string Description { get; set; }
         [Required(ErrorMessage = "To pole jest wymagane"), Range(1, 10000), Display(Name = "Cena")] //mozna zrobic wlasny validator
-        public int Price { get; set; }
+        public float Price { get; set; }
         [DefaultValue(false), Display(Name = "Ukryty")]
         public bool IsHidden { get; set; }
         [Required(ErrorMessage = "To pole jest wymagane"), Display(Name = "Stan magazynowy")]
