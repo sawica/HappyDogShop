@@ -4,92 +4,94 @@
     ViewBag.Title = "CartUserIndex";
 }
 
-<h4 style="width: 70%; margin: 15px auto">Twoje zamówienie: @Session["OrderId"]</h4>
+<h4 style="width: 70%; margin: 45px auto">Twoje zamówienie: @Session["OrderId"]</h4>
 
-<table style="width: 70%; margin: 0 auto" class="table">
-    <tr>
-        <th style="width: 100px">
-            @Html.DisplayNameFor(model => model.Quantity)
-        </th>
-        <th>
-            @Html.DisplayName("Nazwa produktu")
-        </th>
-        <th>
-            @Html.DisplayName("Cena produktu")
-        </th>
-        @* <th> *@
-        @*     @Html.DisplayName("Media") *@
-        @* </th> *@
-
-    </tr>
-
-    @foreach (var item in Model)
-    {
+<div class="sawibox">
+    <table style="width: 100%; margin: 0 auto" class="table">
         <tr>
-            <td style="width: 100px">
-                @Html.EditorFor(modelItem => item.Quantity, new {htmlAttributes = new {@class = "form-control"}})
-            </td>
-            @foreach (Product product in (IEnumerable<Product>) ViewData["products"])
-            {
-                if (item.ProductId == product.ProductId)
-                {
-                    <td style="width: 200px">
-                        @product.Name
-                    </td>
-                    <td style="width: 100px">
-                        @product.Price.ToString()
-                    </td>
-                    <td style="width: 100px">
-                        @foreach (var media in (IEnumerable<MediaType>) ViewData["media"])
-                        {
-                            if (@product.MediaTypeId == media.MediaTypeId)
-                            {
-                                <img style="height: 50px" src="@media.ImagePath"/>
-                            }
-                        }
-
-                    </td>
-                }
-
-            }
-            <td>
-                @* @Html.ActionLink("Edytuj", "Edit", new { id=item.ItemId }) | *@
-                @Html.ActionLink("Szczegóły", "Details", new {id = item.ItemId}) |
-                @*@Html.ActionLink("Usuń", "Index", "Trash", new {id = item.ItemId}, new {})*@
-            </td>
-            <td>
-                <button class="btn btn-default" style=" border-color: #e43e86">
-
-                    @Html.ActionLink("Zapisz zmiany", "Edit", "CartItem", new
-                    {ItemId = item.ItemId, Quantity = @item.Quantity, ProductId = item.ProductId, OrderId = @Session["orderId"]}, new {})
-                </button>            
-                @* //to nie dziala *@
-            </td>
-
+            <th style="width: 100px">
+                @Html.DisplayNameFor(model => model.Quantity)
+            </th>
+            <th>
+                @Html.DisplayName("Nazwa produktu")
+            </th>
+            <th>
+                @Html.DisplayName("Cena produktu")
+            </th>
+            @* <th> *@
+            @*     @Html.DisplayName("Media") *@
+            @* </th> *@
+    
         </tr>
-
-    }
-    <tr>
-        <td>
-
-        </td>
-        <td style="padding-left: 150px">
-            Suma:
-        </td>
-        <td >
-            @ViewBag.sum
-        </td>
-        <td colspan="2" style="padding-left: 110px">
-
-            
-            
-            <button class="btn btn-default" style=" border-color: #e43e86">@Html.ActionLink("Złóż zamówienie", "PlaceAnOrder", "Order", new
-                                                                           {OrderId = @Session["orderId"], AmountPaid = @ViewBag.sum}, new {})</button>
-
-
-        </td>
-    </tr>
-</table>
+    
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td style="width: 100px">
+                    @Html.EditorFor(modelItem => item.Quantity, new {htmlAttributes = new {@class = "form-control"}})
+                </td>
+                @foreach (Product product in (IEnumerable<Product>) ViewData["products"])
+                {
+                    if (item.ProductId == product.ProductId)
+                    {
+                        <td style="width: 200px">
+                            @product.Name
+                        </td>
+                        <td style="width: 100px">
+                            @product.Price.ToString()
+                        </td>
+                        <td style="width: 100px">
+                            @foreach (var media in (IEnumerable<MediaType>) ViewData["media"])
+                            {
+                                if (@product.MediaTypeId == media.MediaTypeId)
+                                {
+                                    <img style="height: 50px" src="@media.ImagePath"/>
+                                }
+                            }
+    
+                        </td>
+                    }
+    
+                }
+                <td>
+                    @* @Html.ActionLink("Edytuj", "Edit", new { id=item.ItemId }) | *@
+                    @Html.ActionLink("Szczegóły", "Details", new {id = item.ItemId})
+                    @*@Html.ActionLink("Usuń", "Index", "Trash", new {id = item.ItemId}, new {})*@
+                </td>
+                <td>
+                    <button class="btn btn-default" style=" border-color: #e43e86">
+    
+                        @Html.ActionLink("Zapisz zmiany", "Edit", "CartItem", new
+                        {ItemId = item.ItemId, Quantity = @item.Quantity, ProductId = item.ProductId, OrderId = @Session["orderId"]}, new {})
+                    </button>            
+                    @* //to nie dziala *@
+                </td>
+    
+            </tr>
+    
+        }
+        <tr>
+            <td>
+    
+            </td>
+            <td style="padding-left: 150px">
+                Suma:
+            </td>
+            <td >
+                @ViewBag.sum
+            </td>
+            <td colspan="2" style="padding-left: 110px">
+    
+                
+                
+                <button class="btn btn-default" style=" border-color: #e43e86">@Html.ActionLink("Złóż zamówienie", "PlaceAnOrder", "Order", new
+                                                                               {OrderId = @Session["orderId"], AmountPaid = @ViewBag.sum}, new {})</button>
+    
+    
+            </td>
+        </tr>
+    </table>
+</div>
 <div>
     @Html.ActionLink("Wróć", "UserIndex", "Products")
 </div>
