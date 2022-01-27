@@ -4,7 +4,7 @@
     ViewBag.Title = "CartUserIndex";
 }
 
-<h4 style="width: 70%; margin: 15px auto">Twoje zamówienie:  @ViewBag.orderId @Session["OrderId"]</h4>
+<h4 style="width: 70%; margin: 15px auto">Twoje zamówienie: @ViewBag.orderId @Session["OrderId"]</h4>
 
 <table style="width: 70%; margin: 0 auto" class="table">
     <tr>
@@ -23,10 +23,11 @@
 
     </tr>
 
-    @foreach (var item in Model) {
+    @foreach (var item in Model)
+    {
         <tr>
             <td style="width: 100px">
-                @Html.EditorFor(modelItem => item.Quantity, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(modelItem => item.Quantity, new {htmlAttributes = new {@class = "form-control"}})
             </td>
             @foreach (Product product in (IEnumerable<Product>) ViewData["products"])
             {
@@ -46,22 +47,22 @@
                                 <img style="height: 50px" src="@media.ImagePath"/>
                             }
                         }
-                    
+
                     </td>
                 }
-           
+
             }
             <td>
                 @* @Html.ActionLink("Edytuj", "Edit", new { id=item.ItemId }) | *@
-                @Html.ActionLink("Szczegóły", "Details", new { id=item.ItemId }) |
-                @Html.ActionLink("Usuń", "Delete", new { id=item.ItemId })
+                @Html.ActionLink("Szczegóły", "Details", new {id = item.ItemId}) |
+                @Html.ActionLink("Usuń", "Delete", new {id = item.ItemId})
             </td>
         </tr>
 
     }
     <tr>
         <td>
-            
+
         </td>
         <td style="padding-left: 150px">
             Suma:
@@ -71,7 +72,8 @@
         </td>
         <td colspan="2" style="padding-left: 110px">
 
-            @Html.ActionLink("Złóż zamówienie", "Index")
+            @Html.ActionLink("Złóż zamówienie", "Create", "Order", new
+    {OrderId = @Session["orderId"], UserID = @Session["userId"], AmountPaid = @ViewBag.sum, Status = 1 } )
         </td>
     </tr>
 </table>

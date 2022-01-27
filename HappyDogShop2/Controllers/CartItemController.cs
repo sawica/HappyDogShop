@@ -55,6 +55,12 @@ namespace HappyDogShop2.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "ItemId,Quantity,ProductId, OrderId")] CartItem cartItem)
         {
+            //TODO jak zrobic to zeby przy braku otwartego zamowienia tworzylo nowe
+            // if (cartItem.OrderId = null)
+            // {
+            //     Order order = new Order();
+            //     Session["orderId"] = order.OrderId;
+            // }
             if (ModelState.IsValid)
             {
                 db.CartItems.Add(cartItem);

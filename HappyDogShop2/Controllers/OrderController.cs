@@ -53,6 +53,7 @@ namespace HappyDogShop2.Controllers
         // GET: Orders/Create
         public ActionResult Create()
         {
+
             return View();
         }
 
@@ -69,7 +70,7 @@ namespace HappyDogShop2.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            Session["orderId"] = order.OrderId;
             return View(order);
         }
 
