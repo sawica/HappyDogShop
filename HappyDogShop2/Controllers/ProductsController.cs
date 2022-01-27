@@ -24,6 +24,7 @@ namespace HappyDogShop2.Controllers
         {
             ViewData["categories"] = from category in db.Categories select category;
             ViewData["media"] = from media in db.MediaTypes select media;
+            ViewData["saleList"] = from sale in db.Sales select sale;
             Console.WriteLine(categoryId);
             List<Product> list;
             if (categoryId == -2) //nowości

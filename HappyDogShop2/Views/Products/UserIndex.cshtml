@@ -3,6 +3,7 @@
 <link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
 
 @using System.Collections
+@using System.Collections.Specialized
 @using HappyDogShop2.Models
 
 @{
@@ -13,38 +14,48 @@
 }
 
 <h4>Produkty:</h4>
+@section sales {
+    <p style="background: #1b6d85; color: white; margin: 25px auto"> Zapraszamy do zakupu naszych produktów! </p>
+            @* @foreach (Sale sale in (IEnumerable<Sale>) ViewData["saleList"]) *@
+            @* { *@
+            @*     <p style="margin: 25px auto">@sale.Name  @sale.ValueInPercent%  </p> *@
+            @*     <p> do @sale.EndDate</p> *@
+            @* } *@
+            @* <div style="background: #1b6d85; color: white"> *@
+            @*     <p style="margin: 25px auto" >Zobacz nasze promocje</p> *@
+            @* </div> *@
+}
 
 @section leftMenu
 {
-    <div style="width: 80%; margin: 50px auto ; background-color: #f7e6cf; padding: 20px">
+    @* <div style="width: 80%; margin: 50px auto ; background-color: #f7e6cf; padding: 20px"> *@
 
-        <h2>@Html.ActionLink("wszystko", "UserIndex", new { categoryId = -1 })</h2>
+        <p  style="color: #e43e86" >@Html.ActionLink("wszystko", "UserIndex", new { categoryId = -1 })</p>
 
-        <h2>@Html.ActionLink("nowości", "UserIndex", new { categoryId = -2 })</h2>
+        <p>@Html.ActionLink("nowości", "UserIndex", new { categoryId = -2 })</p>
 
-        <h2>@Html.ActionLink("promocje", "UserIndex", new { categoryId = -3 })</h2>
-
-        <h2>kategorie</h2>
+        <p>@Html.ActionLink("promocje", "UserIndex", new { categoryId = -3 })</p>
+    
         @foreach (var c in (IEnumerable<Category>)ViewData["categories"])
         {
         if (c.Parent == null && c.IsHidden == false)
         {
-            <h2>@Html.ActionLink(@c.Name, "UserIndex", new { categoryId = c.CategoryId })</h2>
+            <p>@Html.ActionLink(@c.Name, "UserIndex", new { categoryId = c.CategoryId })</p>
            foreach (var item in (IEnumerable<Category>) ViewData["categories"])
            {
                if (c.CategoryId == item.ParentId && item.IsHidden == false)
                {
-               <h3 style="color: #1b6d85"> > @Html.ActionLink(@item.Name, "UserIndex", new { categoryId = item.CategoryId })</h3>
+               <p style="margin-left: 20px">@Html.ActionLink(@item.Name, "UserIndex", new { categoryId = item.CategoryId })</p>
                foreach (var item2 in (IEnumerable<Category>) ViewData["categories"])
                {
                    if (item.CategoryId == item2.ParentId && item2.IsHidden == false)
                    {
-                       <h4 style="color: #e43e86">  > @Html.ActionLink(@item2.Name, "UserIndex", new { categoryId = item2.CategoryId })</h4>
+                       <p  style="margin-left: 40px"> @Html.ActionLink(@item2.Name, "UserIndex", new { categoryId = item2.CategoryId })</p>
                        foreach (var item3 in (IEnumerable<Category>) ViewData["categories"])
                        {
                            if (item2.CategoryId == item3.ParentId && item3.IsHidden == false)
                            {
-                               <h5 style="color: #3c3c3c">   > @Html.ActionLink(@item3.Name, "UserIndex", new { categoryId = item3.CategoryId })</h5>
+                               <p  style="margin-left: 60px">@Html.ActionLink(@item3.Name, "UserIndex", new { categoryId = item3.CategoryId })</p>
                            }
                        }
                    }
@@ -54,7 +65,7 @@
         }
     }
         
-    </div>
+    @* </div> *@
 }
 @section productList {
 
