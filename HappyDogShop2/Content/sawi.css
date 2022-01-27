@@ -148,3 +148,9 @@ body a{
     padding: 30px;
     margin: 50px;
 }
+.sawibox-input {
+    border-style: double;
+    border-radius: 8px;
+    border-color: #f7e6cf;
+    padding: 30px;
+}
