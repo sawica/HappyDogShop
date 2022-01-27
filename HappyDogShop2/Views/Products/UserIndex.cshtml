@@ -71,22 +71,22 @@
         {
         if (c.Parent == null && c.IsHidden == false)
         {
-            <h2>@Html.ActionLink(@c.Name, "UserIndex", new { id = c.CategoryId })</h2>
+            <h2>@Html.ActionLink(@c.Name, "UserIndex", new { categoryId = c.CategoryId })</h2>
            foreach (var item in (IEnumerable<Category>) ViewData["categories"])
            {
                if (c.CategoryId == item.ParentId && item.IsHidden == false)
                {
-               <h3 style="color: #1b6d85"> > @Html.ActionLink(@item.Name, "UserIndex", new { id = item.CategoryId })</h3>
+               <h3 style="color: #1b6d85"> > @Html.ActionLink(@item.Name, "UserIndex", new { categoryId = item.CategoryId })</h3>
                foreach (var item2 in (IEnumerable<Category>) ViewData["categories"])
                {
                    if (item.CategoryId == item2.ParentId && item2.IsHidden == false)
                    {
-                       <h4 style="color: #e43e86">  > @Html.ActionLink(@item2.Name, "UserIndex", new { id = item2.CategoryId })</h4>
+                       <h4 style="color: #e43e86">  > @Html.ActionLink(@item2.Name, "UserIndex", new { categoryId = item2.CategoryId })</h4>
                        foreach (var item3 in (IEnumerable<Category>) ViewData["categories"])
                        {
                            if (item2.CategoryId == item3.ParentId && item3.IsHidden == false)
                            {
-                               <h5 style="color: #3c3c3c">   > @Html.ActionLink(@item3.Name, "UserIndex", new { id = item3.CategoryId })</h5>
+                               <h5 style="color: #3c3c3c">   > @Html.ActionLink(@item3.Name, "UserIndex", new { categoryId = item3.CategoryId })</h5>
                            }
                        }
                    }
