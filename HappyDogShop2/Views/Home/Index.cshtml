@@ -1,4 +1,6 @@
-﻿@{
+﻿@using System.Collections
+@using HappyDogShop2.Models
+@{
     ViewBag.Title = "Home Page";
 }
 <div style="height: 50px">
@@ -54,26 +56,31 @@ function showSlides() {
         <p>
             Szeroki wybór szelek, smyczy, obroży, a także nerek i wygodnych kieszonek na smaczki i woreczki.
         </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Zobacz ofertę &raquo;</a></p>
+        <button class="btn btn-default" style=" border-color: #e43e86">@Html.ActionLink("Zobacz ofertę", "UserIndex", "Products", new { categoryId = -1}, new {})</button>
     </div>
     <div class="col-md-4">
         <img style="max-width: 350px" src="https://lillypetshop.pl/759-big_default/kosz-na-zabawki-playtime-light-grey.jpg" />
         <h2>Szarpaki i gryzaki</h2>
         <p>Ręcznie szyte zabawki, naturalne gryzaki, szarpaki plecione, maty i piłki węchowe.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Zobacz ofertę &raquo;</a></p>
-    </div>
+        <button class="btn btn-default" style=" border-color: #e43e86">@Html.ActionLink("Zobacz ofertę", "UserIndex", "Products", new { categoryId = -1}, new {})</button>
+        </div>
     <div class="col-md-4">
         <img style="max-width: 350px" src="https://lillypetshop.pl/1109-thickbox_default/ceramiczna-dla-psa-lub-kota-sand.jpg" />
         <h2>Jedzonko</h2>
         <p>Czyli to co wszystkie pieski lubią najbardziej. Starannie wyselekcjonowana oferta karm zarówno zbożowych, jak i bezzbożowych, oraz duży wybór smaczków zdrowych dla Twojego psa. </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Zobacz ofertę &raquo;</a></p>
+        <button class="btn btn-default" style=" border-color: #e43e86">@Html.ActionLink("Zobacz ofertę", "UserIndex", "Products", new { categoryId = -1}, new {})</button></div>
+    <h2 style="color: #e43e86; width: 100%; text-align: center">Bestselery</h2>
+    <div style="overflow: auto; display: inline-flex; max-width: 100%" >
+   
+           @foreach(Product product in (IEnumerable) ViewData["bestselers"])
+               {
+                   <div style="padding: 10px; text-align: center">
+                       <img style="width: 200px" src="@product.MediaType.ImagePath"/>
+                       <h3 style="color: #1b6d85">@Html.ActionLink(@product.Name, "UserDetails","Products", new { id = product.ProductId}, new {})</h3>
+                       <h4>@product.Price</h4>
+                   </div>
+           
+               }
     </div>
 </div>
-
-<div>
-    @foreach(var product in ViewBag.BestProducts)
-    {
-        <h3 style="color: #1b6d85"> @product.Name</h3>
-    }
-    
-</div>
+ 

@@ -17,8 +17,9 @@ namespace HappyDogShop2.Controllers
         public ActionResult Index()
         {
             List<int> list = new List<int>();
-            list = db.CartItems.GroupBy(item => item.Product.ProductId).OrderByDescending(item => item.Count()).Select(x=>x.Key).ToList().GetRange(0,3);
+            list = db.CartItems.GroupBy(item => item.Product.ProductId).OrderByDescending(item => item.Count()).Select(x=>x.Key).ToList().GetRange(0,10);
             ViewBag.BestProducts = db.Products.Where(x => list.Contains(x.ProductId));
+            ViewData["bestselers"] = db.Products.Where(x => list.Contains(x.ProductId));
             Console.Write(list.Count);
             return View();
         }
@@ -36,7 +37,12 @@ namespace HappyDogShop2.Controllers
 
             return View();
         }
-        
+
+        // public ActionResult ProcessRequest()
+        // {
+        //     return View();
+        // }
+        //
         [HttpPost]  
         public ActionResult Contact(string customerName, string customerEmail, string customerRequest) {  
             try {  
