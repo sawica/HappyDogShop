@@ -74,7 +74,7 @@ namespace HappyDogShop2.Controllers
         public ActionResult Create2(int Quantity, int ProductId, int? OrderId)
         {
             //TODO jak zrobic to zeby przy braku otwartego zamowienia tworzylo nowe
-            
+            Console.Write(OrderId);
             if (OrderId == null)
             {
                 if (Session["userId"] == null)
@@ -86,9 +86,9 @@ namespace HappyDogShop2.Controllers
                     Order order = new Order();
                     order.UserId = (int) Session["userId"];
                     order.Date = DateTime.Now;
-                    Session["orderId"] = order.OrderId;
                     db.Orders.Add(order);
-                    db.SaveChanges();
+                    db.SaveChanges();                    
+                    Session["orderId"] = order.OrderId;
                 }
             }
 
@@ -98,7 +98,7 @@ namespace HappyDogShop2.Controllers
             cartItem.OrderId = (int) Session["orderId"];
             db.CartItems.Add(cartItem);
             db.SaveChanges();
-            return RedirectToAction("UserIndex");
+            return RedirectToAction("UserIndex", new { OrderId=cartItem.OrderId} );
 
         }
 
@@ -181,7 +181,6 @@ namespace HappyDogShop2.Controllers
             
             if (OrderId > 0)
             {
-                
                 list = db.CartItems.Where(cartItem => cartItem.OrderId == OrderId).ToList();
             }
             foreach (CartItem item in list)
