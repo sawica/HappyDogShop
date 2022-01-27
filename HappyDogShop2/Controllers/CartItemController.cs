@@ -45,6 +45,7 @@ namespace HappyDogShop2.Controllers
         // GET: CartItems/Create
         public ActionResult Create()
         {
+            prepareList();
             return View();
         }
 
@@ -84,6 +85,7 @@ namespace HappyDogShop2.Controllers
                 {
                     Order order = new Order();
                     order.UserId = (int) Session["userId"];
+                    order.Date = DateTime.Now;
                     Session["orderId"] = order.OrderId;
                     db.Orders.Add(order);
                     db.SaveChanges();
@@ -103,6 +105,7 @@ namespace HappyDogShop2.Controllers
         // GET: CartItems/Edit/5
         public ActionResult Edit(int? id)
         {
+            prepareList();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -190,7 +193,16 @@ namespace HappyDogShop2.Controllers
             ViewBag.sum = sum;
             return View(list);
         }
+        public void prepareList()
+        {
+            List<SelectListItem> productList = new List<SelectListItem>();
+            List<SelectListItem> orderList = new List<SelectListItem>();
 
+            foreach (var product in db.Products) productList.Add(new SelectListItem{ Text = product.Name, Value = product.ProductId.ToString()});
+            foreach (var order in db.Orders) orderList.Add(new SelectListItem{ Text = order.OrderId.ToString(), Value = order.OrderId.ToString()});
 
+            ViewData["productList"] = productList;
+            ViewData["orderList"] = orderList;
+        }
     }
 }

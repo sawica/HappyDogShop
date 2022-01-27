@@ -70,10 +70,7 @@ namespace HappyDogShop2.Controllers
             List<Product> list = db.Products.ToList();
             ViewBag.min = db.Products.Min(product => product.Price);
             ViewBag.max = db.Products.Max(product => product.Price);
-            
-            Console.WriteLine(ViewBag.min);
-            Console.WriteLine(ViewBag.max);
-            
+
             if (categoryId != -1) list = list.Where(product => product.CategoryId == categoryId).ToList();
             
             if (Name != "") list = list.Where(product => product.Name == Name).ToList();
