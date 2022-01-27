@@ -36,8 +36,15 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                @Html.EditorFor(model => model.Status, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Status, "", new { @class = "text-danger" })
+                <select>
+                    <option label="@(Model.Status == HappyDogShop2.Models.Status.Otwarte)">Otwarte </option>
+                    <option label="@(Model.Status == HappyDogShop2.Models.Status.Przyjęte)">Przyjęte</option>
+                    <option label="@(Model.Status == HappyDogShop2.Models.Status.Zapłacone)">Zapłacone</option>
+                    <option label="@(Model.Status == HappyDogShop2.Models.Status.Wysłane)">Wysłane</option>
+                    <option label="@(Model.Status == HappyDogShop2.Models.Status.Dostarczone)">Dostarczone</option>
+                    </select>
+                @* @Html.EditorFor(model => model.Status, new {htmlAttributes = new {@class = "form-control"}}) *@
+                @Html.ValidationMessageFor(model => model.Status, "", new {@class = "text-danger"})
             </div>
         </div>
         
