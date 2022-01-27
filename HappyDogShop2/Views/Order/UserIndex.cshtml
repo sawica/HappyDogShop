@@ -18,10 +18,7 @@
         <th>
             @Html.DisplayNameFor(model => model.Status)
         </th>
-        <th>
-            Liczba produktów (nie działa)
-        </th>
-        
+
         <th></th>
     </tr>
 
@@ -34,11 +31,8 @@
                 @Html.DisplayFor(modelItem => item.Status)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CartItems.Count)
-            </td>
-            <td>
                 @Html.ActionLink("Szczegóły", "Details", new { id=item.OrderId }) |
-                @Html.ActionLink("Zamów ponownie", "OrderAgain", new { id=item.OrderId }) |
+                @Html.ActionLink("Zamów ponownie", "OrderAgain", new { OldOrderId=item.OrderId, NewOrderId = Session["orderId"] }) |
                 
             </td>
         </tr>

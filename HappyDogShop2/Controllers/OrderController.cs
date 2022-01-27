@@ -146,9 +146,31 @@ namespace HappyDogShop2.Controllers
             base.Dispose(disposing);
         }
 
-        public ActionResult OrderAgain(int id)
+        public ActionResult OrderAgain(int? NewOrderId, int OldOrderId)
         {
-            throw new System.NotImplementedException();
+            if (NewOrderId == null)
+            {
+                Order order = new Order();
+                Console.Write((int) Session["userId"]);
+                    order.UserId = (int) Session["userId"];
+                    order.Date = DateTime.Now;
+                    db.Orders.Add(order);
+                    db.SaveChanges();                    
+                    Session["orderId"] = order.OrderId;
+                
+            }
+
+            foreach (var item in db.CartItems.Where(i=>i.OrderId == OldOrderId))
+            {
+                CartItem cartItem = new CartItem();
+                cartItem.Quantity = item.Quantity;
+                cartItem.ProductId = item.ProductId;
+                cartItem.OrderId = (int) Session["orderId"];
+                db.CartItems.Add(cartItem);
+            }
+            
+            db.SaveChanges();
+            return RedirectToAction("UserIndex", "CartItem", new { OrderId=(int) Session["orderId"]} );
         }
         
         public ActionResult PlaceAnOrder(int OrderId, decimal AmountPaid)

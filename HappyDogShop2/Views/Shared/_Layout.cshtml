@@ -50,7 +50,7 @@
                             <a class="dropdown-item">@Html.ActionLink("Twoje zamówienia", "UserIndex", "Order", new { UserId=@Session["UserId"] }, "" )</a>
                         </div>
                     </li>       
-                    <li style="display:none" id="logout">@Html.ActionLink("Wyloguj", "LogOut", "Login")</li>   
+                    <li style="display:none" id="logout" class="pull-left">@Html.ActionLink("Wyloguj", "LogOut", "Login" )</li>   
                     <script type="text/javascript">
                         if (@Session["userId"] !== 0 )
                         {
