@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Data.Entity;
 using System.Linq;
@@ -153,10 +154,17 @@ namespace HappyDogShop2.Controllers
         public ActionResult PlaceAnOrder(int OrderId, decimal AmountPaid)
         {
             Order order = db.Orders.Find(OrderId);
+            Console.Write(order.UserId);
             order.AmountPaid = AmountPaid;
             order.Status = Status.Przyjęte;
+
+            List<CartItem> itemList = new List<CartItem>();
+            itemList = db.CartItems.Where(item => item.Order.OrderId == order.OrderId).ToList();
+            foreach (var item in itemList) db.Products.Where(product => product.ProductId == item.ProductId).ToList().ForEach(pr => pr.StockCount = pr.StockCount - item.Quantity);
             
-            return RedirectToAction("UserIndex");
+            db.Entry(order).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("UserIndex", new {UserId = order.UserId});
         }
     }
 }
