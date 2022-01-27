@@ -8,7 +8,7 @@
 
 <table style="width: 70%; margin: 0 auto" class="table">
     <tr>
-        <th>
+        <th style="width: 100px">
             @Html.DisplayNameFor(model => model.Quantity)
         </th>
         <th>
@@ -59,10 +59,11 @@
             </td>
             <td>
                 <button class="btn btn-default" style=" border-color: #e43e86">
-                    //to nie dziala
+
                     @Html.ActionLink("Zapisz zmiany", "Edit", "CartItem", new
                     {ItemId = item.ItemId, Quantity = @item.Quantity, ProductId = item.ProductId, OrderId = @Session["orderId"]}, new {})
-                </button>
+                </button>            
+                @* //to nie dziala *@
             </td>
 
         </tr>
