@@ -71,9 +71,10 @@
             @ViewBag.sum
         </td>
         <td colspan="2" style="padding-left: 110px">
+            <button class="btn btn-default" style=" border-color: #e43e86">@Html.ActionLink("Złóż zamówienie", "PlaceAnOrder", "Order", new
+                                                                               {OrderId = @Session["orderId"], AmountPaid = @ViewBag.sum }, new {})</button>
 
-            @Html.ActionLink("Złóż zamówienie", "Create", "Order", new
-    {OrderId = @Session["orderId"], UserID = @Session["userId"], AmountPaid = @ViewBag.sum, Status = 1 } )
+            
         </td>
     </tr>
 </table>

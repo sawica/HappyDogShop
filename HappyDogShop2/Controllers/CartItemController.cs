@@ -70,6 +70,35 @@ namespace HappyDogShop2.Controllers
 
             return View(cartItem);
         }
+        public ActionResult Create2(int Quantity, int ProductId, int? OrderId)
+        {
+            //TODO jak zrobic to zeby przy braku otwartego zamowienia tworzylo nowe
+            
+            if (OrderId == null)
+            {
+                if (Session["userId"] == null)
+                {
+                    return RedirectToAction("Index", "Login");
+                }
+                else
+                {
+                    Order order = new Order();
+                    order.UserId = (int) Session["userId"];
+                    Session["orderId"] = order.OrderId;
+                    db.Orders.Add(order);
+                    db.SaveChanges();
+                }
+            }
+
+            CartItem cartItem = new CartItem();
+            cartItem.Quantity = Quantity;
+            cartItem.ProductId = ProductId;
+            cartItem.OrderId = (int) Session["orderId"];
+            db.CartItems.Add(cartItem);
+            db.SaveChanges();
+            return RedirectToAction("UserIndex");
+
+        }
 
         // GET: CartItems/Edit/5
         public ActionResult Edit(int? id)
@@ -137,7 +166,7 @@ namespace HappyDogShop2.Controllers
             base.Dispose(disposing);
         }
 
-        public ActionResult UserIndex(int OrderId = -1)
+        public ActionResult UserIndex(int? OrderId = 0)
         {
             ViewData["categories"] = from category in db.Categories select category;
             ViewData["media"] = from media in db.MediaTypes select media;
@@ -147,16 +176,11 @@ namespace HappyDogShop2.Controllers
             
             List<CartItem> list= new List<CartItem>();
             
-                if (OrderId != -1)
+            if (OrderId > 0)
             {
                 
                 list = db.CartItems.Where(cartItem => cartItem.OrderId == OrderId).ToList();
             }
-            else
-            {
-                list = db.CartItems.ToList();
-            }
-                
             foreach (CartItem item in list)
             {
                 Product product = db.Products.Find(item.ProductId);
@@ -166,5 +190,7 @@ namespace HappyDogShop2.Controllers
             ViewBag.sum = sum;
             return View(list);
         }
+
+
     }
 }

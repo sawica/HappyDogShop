@@ -125,7 +125,7 @@
                     </h3>
        
                     <input type="submit" value="Dodaj do koszyka" class="btn btn-default" style=" border-color: #e43e86" onclick=""/>
-                    <button class="btn btn-default" style=" border-color: #e43e86">@Html.ActionLink("Dodaj do koszyka", "Create", "CartItem", new { Quantity = 1,ProductId = item.ProductId,OrderID = @Session["orderID"]}, new {})</button>
+                    <button class="btn btn-default" style=" border-color: #e43e86">@Html.ActionLink("Dodaj do koszyka", "Create2", "CartItem", new { Quantity = 1, ProductId = item.ProductId, OrderID = @Session["orderID"]}, new {})</button>
                 </div>
             }
         }
