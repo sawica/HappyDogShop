@@ -8,7 +8,7 @@ namespace HappyDogShop2.Models
 {
     public enum Status
     {
-        Przyjęte, Zapłacone, Wysłane, Dostarczone
+        Otwarte, Przyjęte, Zapłacone, Wysłane, Dostarczone
     }
     public class Order
     {
@@ -21,12 +21,11 @@ namespace HappyDogShop2.Models
         
         [Required(ErrorMessage = "To pole jest wymagane"), Display(Name = "Suma"), DefaultValue(0)]
         public decimal AmountPaid { get; set; }
-        [DisplayFormat(DataFormatString = "Przyjęte"), DefaultValue(0)]
-        
-        [Required(ErrorMessage = "To pole jest wymagane"), DataType(DataType.Date), Display(Name = "Data zamówienia")]
-        public DateTime Date { get; set; }
+
+        [DisplayFormat(DataFormatString = "Otwarte"), DefaultValue(0)]
         public Status Status { get; set; }
-          
+        [Required(ErrorMessage = "To pole jest wymagane"), DataType(DataType.DateTime), Display(Name = "Data zamówienia")]
+        public DateTime Date { get; set; } = DateTime.Now;
         public ICollection<CartItem> CartItems { get; set; }
     }
 }

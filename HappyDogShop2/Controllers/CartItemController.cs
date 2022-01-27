@@ -45,6 +45,7 @@ namespace HappyDogShop2.Controllers
         // GET: CartItems/Create
         public ActionResult Create()
         {
+            prepareList();
             return View();
         }
 
@@ -73,7 +74,7 @@ namespace HappyDogShop2.Controllers
         public ActionResult Create2(int Quantity, int ProductId, int? OrderId)
         {
             //TODO jak zrobic to zeby przy braku otwartego zamowienia tworzylo nowe
-            
+            Console.Write(OrderId);
             if (OrderId == null)
             {
                 if (Session["userId"] == null)
@@ -84,9 +85,10 @@ namespace HappyDogShop2.Controllers
                 {
                     Order order = new Order();
                     order.UserId = (int) Session["userId"];
-                    Session["orderId"] = order.OrderId;
+                    order.Date = DateTime.Now;
                     db.Orders.Add(order);
-                    db.SaveChanges();
+                    db.SaveChanges();                    
+                    Session["orderId"] = order.OrderId;
                 }
             }
 
@@ -96,13 +98,14 @@ namespace HappyDogShop2.Controllers
             cartItem.OrderId = (int) Session["orderId"];
             db.CartItems.Add(cartItem);
             db.SaveChanges();
-            return RedirectToAction("UserIndex");
+            return RedirectToAction("UserIndex", new { OrderId=cartItem.OrderId} );
 
         }
 
         // GET: CartItems/Edit/5
         public ActionResult Edit(int? id)
         {
+            prepareList();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -178,7 +181,6 @@ namespace HappyDogShop2.Controllers
             
             if (OrderId > 0)
             {
-                
                 list = db.CartItems.Where(cartItem => cartItem.OrderId == OrderId).ToList();
             }
             foreach (CartItem item in list)
@@ -190,7 +192,16 @@ namespace HappyDogShop2.Controllers
             ViewBag.sum = sum;
             return View(list);
         }
+        public void prepareList()
+        {
+            List<SelectListItem> productList = new List<SelectListItem>();
+            List<SelectListItem> orderList = new List<SelectListItem>();
 
+            foreach (var product in db.Products) productList.Add(new SelectListItem{ Text = product.Name, Value = product.ProductId.ToString()});
+            foreach (var order in db.Orders) orderList.Add(new SelectListItem{ Text = order.OrderId.ToString(), Value = order.OrderId.ToString()});
 
+            ViewData["productList"] = productList;
+            ViewData["orderList"] = orderList;
+        }
     }
 }

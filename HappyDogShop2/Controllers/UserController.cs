@@ -74,16 +74,19 @@ namespace HappyDogShop2.Controllers
         // GET: Users/Edit/5
         public ActionResult Edit(int? id)
         {
-            prepareList();
+             prepareList();
             if (id == null)
             {
+                prepareList();
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
             User user = db.Users.Find(id);
             if (user == null)
             {
+                prepareList();
                 return HttpNotFound();
             }
+            prepareList();
             return View(user);
         }
 
@@ -94,12 +97,16 @@ namespace HappyDogShop2.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "UserId,FirstName,LastName,Username,Password,IsAdmin,PhoneNumber,Address,City,Country,ZipCode, SaleId")] User user)
         {
+            Console.Write("sale" + user.SaleId);
             if (ModelState.IsValid)
             {
+                Console.Write("sale" + user.SaleId);
                 db.Entry(user).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
+            prepareList();
+
             return View(user);
         }
 
@@ -157,10 +164,10 @@ namespace HappyDogShop2.Controllers
 
         public void prepareList()
         {
-            List<SelectListItem> saleList = new List<SelectListItem>();
+            List<SelectListItem> saleUserList = new List<SelectListItem>();
 
-            foreach (var sale in db.Sales) saleList.Add(new SelectListItem{ Text = sale.Name + ": " + sale.ValueInPercent + "%", Value = sale.SaleId.ToString()});
+            foreach (var sale in db.Sales) saleUserList.Add(new SelectListItem{ Text = sale.Name + ": " + sale.ValueInPercent + "%", Value = sale.SaleId.ToString()});
 
-            ViewData["saleList"] = saleList;
+            ViewData["saleUserList"] = saleUserList;
         }
 }}
