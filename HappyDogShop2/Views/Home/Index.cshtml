@@ -63,23 +63,25 @@ function showSlides() {
         <h2>Szarpaki i gryzaki</h2>
         <p>Ręcznie szyte zabawki, naturalne gryzaki, szarpaki plecione, maty i piłki węchowe.</p>
         <button class="btn btn-default" style=" border-color: #e43e86">@Html.ActionLink("Zobacz ofertę", "UserIndex", "Products", new { categoryId = -1}, new {})</button>
-        </div>
+    </div>
     <div class="col-md-4">
         <img style="max-width: 350px" src="https://lillypetshop.pl/1109-thickbox_default/ceramiczna-dla-psa-lub-kota-sand.jpg" />
         <h2>Jedzonko</h2>
         <p>Czyli to co wszystkie pieski lubią najbardziej. Starannie wyselekcjonowana oferta karm zarówno zbożowych, jak i bezzbożowych, oraz duży wybór smaczków zdrowych dla Twojego psa. </p>
-        <button class="btn btn-default" style=" border-color: #e43e86">@Html.ActionLink("Zobacz ofertę", "UserIndex", "Products", new { categoryId = -1}, new {})</button></div>
-    <h2 style="color: #e43e86; width: 100%; text-align: center">Bestselery</h2>
-    <div style="overflow: auto; display: inline-flex; max-width: 100%" >
-   
-           @foreach(Product product in (IEnumerable) ViewData["bestselers"])
-               {
-                   <div style="padding: 10px; text-align: center">
-                       <img style="width: 200px" src="@product.MediaType.ImagePath"/>
-                       <h3 style="color: #1b6d85">@Html.ActionLink(@product.Name, "UserDetails","Products", new { id = product.ProductId}, new {})</h3>
-                       <h4>@product.Price</h4>
-                   </div>
-           
-               }
+        <button class="btn btn-default" style=" border-color: #e43e86">@Html.ActionLink("Zobacz ofertę", "UserIndex", "Products", new { categoryId = -1}, new {})</button>
     </div>
+   
+</div>
+<h2 style="margin-top: 100px ;color: #e43e86; width: 100%; text-align: center">Bestselery</h2>
+<div style="overflow: auto; display: inline-flex; max-width: 100%; height: 300px; overflow-scrolling: auto; overflow-style: marquee-line; marquee-loop: revert; marquee-style: slide" >
+   
+    @foreach(Product product in (IEnumerable) ViewData["bestselers"])
+    {
+        <div style="padding: 10px; text-align: center">
+            <img style="width: 200px" src="@product.MediaType.ImagePath"/>
+            <h3 style="color: #1b6d85">@Html.ActionLink(@product.Name, "UserDetails","Products", new { id = product.ProductId}, new {})</h3>
+            <h4>@product.Price</h4>
+        </div>
+           
+    }
 </div>

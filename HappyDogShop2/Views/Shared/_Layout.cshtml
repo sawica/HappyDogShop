@@ -82,8 +82,33 @@
         <img src=""/>
         <hr />
                 @RenderBody()
-        <footer style=" color: #e43e86">
-            <p>&copy; @DateTime.Now.Year - HappyDog Shop</p>
+        <footer style=" width: 100%;  margin: 50px auto; color: #e43e86; background-color: white;  ">
+                <hr style="height: 1px; background-color: #e43e86; color: #e43e86" />
+            <div style="display: grid; grid-template-columns: 400px 350px 400px; grid-template-rows: 150px; column-gap: 10px; row-gap: 15px;
+             justify-items: center;  align-items: center; text-align: center;">
+                <div>
+                    <h2>HappyDog Shop</h2>
+                </div>
+                <div>
+                    <h3>Skontaktuj się z nami</h3>
+                    <address>
+                        <strong>Email:</strong> <a href="mailto:Support@example.com">happydogshop2022@gmail.com</a><br/>
+                    </address>
+                    @Html.ActionLink("formularz kontaktowy", "Contact", "Home")
+                </div>
+                <div>
+                    <address>
+                        Szczęśliwych Piesków 8<br/>
+                        Białystok, 15-123<br/>
+                        <abbr title="Phone">Telefon:</abbr>
+                        123-456-789
+                    </address>
+                </div>
+
+
+            </div>
+                <p>&copy; @DateTime.Now.Year - HappyDog Shop</p>
+                    <hr style="height: 1px; background-color: #e43e86; color: #e43e86" />
         </footer>
     </div>
 
