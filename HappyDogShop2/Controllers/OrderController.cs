@@ -106,6 +106,12 @@ namespace HappyDogShop2.Controllers
         {
             if (ModelState.IsValid)
             {
+                if (Status.Otwarte.ToString().Equals(Request.Form["wybrany"])) order.Status = Status.Otwarte;
+                if (Status.Zapłacone.ToString().Equals(Request.Form["wybrany"])) order.Status = Status.Zapłacone;
+                if (Status.Dostarczone.ToString().Equals(Request.Form["wybrany"])) order.Status = Status.Dostarczone;
+                if (Status.Przyjęte.ToString().Equals(Request.Form["wybrany"]))  order.Status = Status.Przyjęte;
+                if (Status.Wysłane.ToString().Equals(Request.Form["wybrany"])) order.Status = Status.Wysłane;
+                
                 db.Entry(order).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");

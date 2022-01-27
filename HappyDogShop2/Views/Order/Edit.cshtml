@@ -36,7 +36,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.Status, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
-                <select>
+                <select name="wybrany" >
                     <option value="@(Model.Status == HappyDogShop2.Models.Status.Otwarte)">Otwarte </option>
                     <option value="@(Model.Status == HappyDogShop2.Models.Status.Przyjęte)">Przyjęte</option>
                     <option value="@(Model.Status == HappyDogShop2.Models.Status.Zapłacone)">Zapłacone</option>

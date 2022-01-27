@@ -22,7 +22,7 @@ namespace HappyDogShop2.Models
         [Required(ErrorMessage = "To pole jest wymagane"), Display(Name = "Suma"), DefaultValue(0)]
         public decimal AmountPaid { get; set; }
 
-        [DisplayFormat(DataFormatString = "Otwarte"), DefaultValue(0)]
+        [DefaultValue(0)]
         public Status Status { get; set; }
         [Required(ErrorMessage = "To pole jest wymagane"), DataType(DataType.DateTime), Display(Name = "Data zamówienia")]
         public DateTime Date { get; set; } = DateTime.Now;
