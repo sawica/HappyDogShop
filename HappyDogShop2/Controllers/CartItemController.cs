@@ -186,7 +186,7 @@ namespace HappyDogShop2.Controllers
             foreach (CartItem item in list)
             {
                 Product product = db.Products.Find(item.ProductId);
-                sum += product.Price;
+                sum += product.Price * item.Quantity;
             }
 
             ViewBag.sum = sum;
