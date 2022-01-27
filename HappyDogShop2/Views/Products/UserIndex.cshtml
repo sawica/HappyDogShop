@@ -50,19 +50,18 @@
     <div style="width: 80%; margin: 50px auto ; background-color: #f7e6cf; padding: 20px">
         <h2>wszystko</h2>
         <h2>nowości</h2>
-        @* <h2>@Html.ActionLink("nowości", "UserIndex", new { id = Model.ProductId } }, "")</h2> *@
-        @* @foreach(var product in ViewBag.NewProducts) *@
-        @* { *@
-        @*     <h3 style="color: #1b6d85"> @product.Name</h3> *@
-        @* } *@
+        @foreach(var product in ViewBag.NewProducts) 
+        { 
+             <h3 style="color: #1b6d85"> @product.Name</h3> 
+        } 
         <h2>promocje</h2>
-        @* @foreach(var product in Model) *@
-        @* { *@
-        @*     if (product.SaleId != null && product.Sale.StartDate <= @DateTime.Now && product.Sale.EndDate >= @DateTime.Now) *@
-        @*     { *@
-        @*         <h3 style="color: #1b6d85"> @product.Name</h3> *@
-        @*     } *@
-        @* } *@
+        @foreach(var product in Model) 
+        { 
+             if (product.SaleId != null && product.Sale.StartDate <= @DateTime.Now && product.Sale.EndDate >= @DateTime.Now) 
+             { 
+                 <h3 style="color: #1b6d85"> @product.Name</h3> 
+             } 
+         } 
         <h2>kategorie</h2>
         @foreach (var c in (IEnumerable<Category>)ViewData["categories"])
         {
