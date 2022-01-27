@@ -206,3 +206,9 @@ C:/Users/sawic/source/repos/HappyDogShop2/HappyDogShop2/obj/Debug/HappyDogShop2.
 /home/patka/RiderProjects/asp/HappyDogShop/HappyDogShop2/obj/Debug/HappyDogShop2.Migrations.initial.resources
 /home/patka/RiderProjects/asp/HappyDogShop/HappyDogShop2/obj/Debug/HappyDogShop2.csproj.GenerateResource.cache
 /home/patka/RiderProjects/asp/HappyDogShop/HappyDogShop2/obj/Debug/HappyDogShop2.Migrations.orders.resources
+/home/patka/RiderProjects/asp/HappyDogShop/HappyDogShop2/obj/Debug/HappyDogShop2.Migrations.price.resources
+/home/patka/RiderProjects/asp/HappyDogShop/HappyDogShop2/obj/Debug/HappyDogShop2.Migrations.defaultAmountPrice.resources
+/home/patka/RiderProjects/asp/HappyDogShop/HappyDogShop2/obj/Debug/HappyDogShop2.Migrations.orderDate.resources
+/home/patka/RiderProjects/asp/HappyDogShop/HappyDogShop2/bin/PagedList.dll
+/home/patka/RiderProjects/asp/HappyDogShop/HappyDogShop2/bin/PagedList.Mvc.dll
+/home/patka/RiderProjects/asp/HappyDogShop/HappyDogShop2/bin/PagedList.xml
