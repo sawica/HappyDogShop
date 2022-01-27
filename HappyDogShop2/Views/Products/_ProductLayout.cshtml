@@ -6,14 +6,20 @@
 
 <div style="margin: 25px auto">
     <div style="display: flex; justify-content: center; background-color: #1b6d85; height: 100px; margin: 20px auto auto; text-align: center; font-size: x-large; color:  whitesmoke;">
-        <p style="margin: 25px auto">tu moze byc pasek z promkami</p>
+    @* <div style="border-color: #1b6d85" class="sawibox"> *@
+    <p style="margin: 25px auto">tu moze byc pasek z promkami</p>
     </div>
     <div style="display: inline-flex; width: 100%">
         <div style="width: 30%; ">
             @RenderSection("leftMenu")
         </div>
-        @RenderSection("productList")
+        <div>
+                    @RenderSection("productList")
+        </div>
     </div>
+    @* <div style="display: inline; width: 100%; align-items: center"> *@
+    @*     <label>ilość produktów na stronie</label><button>6</button><button>9</button><button>12</button> *@
+    @*     </div> *@
 </div>
 
 @Scripts.Render("~/bundles/jquery")

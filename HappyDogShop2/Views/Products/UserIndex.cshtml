@@ -13,62 +13,17 @@
 }
 
 <h4>Produkty:</h4>
-@* $1$ slider #1# *@
-@* <div style=" margin: 20px auto; display: flex; justify-content: center" >  *@
-@*     <div class="mySlides sawislider"> *@
-@*         <img src="https://lillypetshop.pl/950-thickbox_default/royal-nap-legowisko-dla-sredniego-i-duzego-psa-silver-grey.jpg" style="height: 350px"> *@
-@*         <img src="https://lillypetshop.pl/1076-big_default/organiczna-pilka-rainbow-green.jpg" style="height: 350px "> *@
-@*     </div> *@
-@* *@
-@*     <div class="mySlides sawislider"> *@
-@*         <img src="https://lillypetshop.pl/1076-big_default/organiczna-pilka-rainbow-green.jpg" style="height: 350px "> *@
-@*         <img src="https://lillypetshop.pl/950-thickbox_default/royal-nap-legowisko-dla-sredniego-i-duzego-psa-silver-grey.jpg" style="height: 350px"> *@
-@*     </div> *@
-@* *@
-@* <div class="mySlides sawislider"> *@
-@*     <img src="https://lillypetshop.pl/1072-thickbox_default/dreamy-mata-podrozna-dla-psa-lub-kota-grey.jpg" style="height: 350px"> *@
-@*     <img src="https://lillypetshop.pl/950-thickbox_default/royal-nap-legowisko-dla-sredniego-i-duzego-psa-silver-grey.jpg" style="height: 350px"> *@
-@* </div> *@
-@* *@
-@* </div> *@
-@* <script> *@
-@* var slideIndex = 0; *@
-@* showSlides(); *@
-@* *@
-@* function showSlides() { *@
-@*   let i; *@
-@*   let slides = document.getElementsByClassName("mySlides"); *@
-@*   for (i = 0; i < slides.length; i++) { *@
-@*     slides[i].style.display = "none";   *@
-@*   } *@
-@*   slideIndex++; *@
-@*   if (slideIndex > slides.length) {slideIndex = 1}     *@
-@*   slides[slideIndex-1].style.display = "block";   *@
-@*   setTimeout(showSlides, 2000); // Change image every 2 seconds *@
-@* } *@
-@* </script> *@
-@* $1$ koniec slidera #1# *@
+
 @section leftMenu
 {
     <div style="width: 80%; margin: 50px auto ; background-color: #f7e6cf; padding: 20px">
-        @* <h2>wszystko</h2> *@
+
         <h2>@Html.ActionLink("wszystko", "UserIndex", new { categoryId = -1 })</h2>
-        @* <h2>nowości</h2> *@
+
         <h2>@Html.ActionLink("nowości", "UserIndex", new { categoryId = -2 })</h2>
-        @* <h2>@Html.ActionLink("nowości", "UserIndex", new { id = Model.ProductId } }, "")</h2> *@
-        @* @foreach(var product in ViewBag.NewProducts) *@
-        @* { *@
-        @*     <h3 style="color: #1b6d85"> @product.Name</h3> *@
-        @* } *@
-        @* <h2>promocje</h2> *@
+
         <h2>@Html.ActionLink("promocje", "UserIndex", new { categoryId = -3 })</h2>
-        @* @foreach(var product in Model) *@
-        @* { *@
-        @*     if (product.SaleId != null && product.Sale.StartDate <= @DateTime.Now && product.Sale.EndDate >= @DateTime.Now) *@
-        @*     { *@
-        @*         <h3 style="color: #1b6d85"> @product.Name</h3> *@
-        @*     } *@
-        @* } *@
+
         <h2>kategorie</h2>
         @foreach (var c in (IEnumerable<Category>)ViewData["categories"])
         {
@@ -103,7 +58,7 @@
 }
 @section productList {
 
-    <div style="width: 70%; margin: 50px 0 auto auto; display: grid; grid-template-columns: 250px 250px 250px;
+    <div style="width: 100%; margin: 0 auto auto; display: grid; grid-template-columns: 250px 250px 250px;
                                              grid-template-rows: 400px; 
                                              column-gap: 10px;
                                              row-gap: 15px; justify-items: center">
