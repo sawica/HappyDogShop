@@ -6,19 +6,27 @@
 }
 
 
-<div style="margin: 25px auto">
-    <div style="display: flex; justify-content: center;  background-blend-mode: hard-light; height: 100px; margin: 0 auto; text-align: center; font-size: x-large; color:  #e43e86;">
-        @* <div style="border-color: #1b6d85" class="sawibox"> *@
-        @RenderSection("sales")
+<div style="margin: 50px auto">
+                        <hr style="height: 1px; background-color: #e43e86; color: #e43e86" />
+                        <div style="display: flex; justify-content: center;  background-blend-mode: hard-light;  margin: 0 auto; text-align: center; font-size: x-large; color:  #e43e86;">
+                            @* <div style="border-color: #1b6d85" class="sawibox"> *@
+                            @RenderSection("sales")
 
-    </div>
-    <div style="display: inline-flex; width: 100%">
-        <div style="width: 30%; font-family: 'Fira Code Medium',sans-serif" class="sawibox">
+                        </div>
+       <hr style="height: 1px; background-color: #e43e86; color: #e43e86" />
+    <div style="margin:  50px; display: inline-flex; width: 100%; ">
+        <div style=" width: 25%; font-family: 'Fira Code Medium',sans-serif">
             @RenderSection("leftMenu")
         </div>
-        <div>
-                    @RenderSection("productList")
+        <div style="display: grid; justify-items: center; align-items: center">
+            <div>
+                @RenderSection("productList")
+            </div>
+            <div>
+                @RenderSection("pageNumbers")
+            </div>
         </div>
+
     </div>
     @* <div style="display: inline; width: 100%; align-items: center"> *@
     @*     <label>ilość produktów na stronie</label><button>6</button><button>9</button><button>12</button> *@

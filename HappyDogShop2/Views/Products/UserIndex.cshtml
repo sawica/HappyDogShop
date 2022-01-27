@@ -15,15 +15,18 @@
 
 <h4>Produkty:</h4>
 @section sales {
-    <p style="background: #1b6d85; color: white; margin: 25px auto"> Zapraszamy do zakupu naszych produktów! </p>
-            @* @foreach (Sale sale in (IEnumerable<Sale>) ViewData["saleList"]) *@
-            @* { *@
-            @*     <p style="margin: 25px auto">@sale.Name  @sale.ValueInPercent%  </p> *@
-            @*     <p> do @sale.EndDate</p> *@
-            @* } *@
-            @* <div style="background: #1b6d85; color: white"> *@
-            @*     <p style="margin: 25px auto" >Zobacz nasze promocje</p> *@
-            @* </div> *@
+    <div style="display: grid; grid-template-columns: 400px 350px 400px; grid-template-rows: 200px; column-gap: 10px; row-gap: 15px;
+                 justify-items: center;  align-items: center; text-align: center;">
+            <div>
+                <img style="height: 150px" src="https://lillypetshop.pl/1076-big_default/organiczna-pilka-rainbow-green.jpg">
+            </div>
+            <div>
+                <h3>@Html.ActionLink("Skorzystaj z naszych promocji", "Contact", "Home")</h3>
+            </div>
+            <div>
+                <img style="height: 150px"  src="https://lillypetshop.pl/950-thickbox_default/royal-nap-legowisko-dla-sredniego-i-duzego-psa-silver-grey.jpg">
+            </div>
+        </div>
 }
 
 @section leftMenu
@@ -69,6 +72,7 @@
 }
 @section productList {
 
+    
     <div style="width: 100%; margin: 0 auto auto; display: grid; grid-template-columns: 250px 250px 250px;
                                              grid-template-rows: 400px; 
                                              column-gap: 10px;
@@ -77,8 +81,8 @@
         {
             if (item.IsHidden == false && item.Category.IsHidden == false )
             {
-                <div style="text-align: center; padding: 10px">
-                    <h2 style="height: 60px">@Html.ActionLink(@item.Name, "UserDetails", new { id = item.ProductId})</h2>
+                <div style=" background: rgba(230,95,140,0.13);text-align: center; padding: 10px">
+                    
                     @foreach (var media in (IEnumerable<MediaType>) ViewData["media"])
                     {
                         if (@item.MediaTypeId == media.MediaTypeId)
@@ -86,22 +90,35 @@
                             <img style="height: 150px" src="@media.ImagePath"/>
                         }
                     }
+                    <h2>@Html.ActionLink(@item.Name, "UserDetails", new { id = item.ProductId})</h2>
                 
-                    <h3>
-                        cena: @item.Price
-                    </h3>
+                    <h5>
+                        cena: @item.Price zł
+                    </h5>
        
                     @* <input type="submit" value="Dodaj do koszyka" class="btn btn-default" style=" border-color: #e43e86" onclick=""/> *@
                     <button class="btn btn-default" style=" border-color: #e43e86">@Html.ActionLink("Dodaj do koszyka", "Create2", "CartItem", new { Quantity = 1, ProductId = item.ProductId, OrderID = @Session["orderId"]}, new {})</button>
                 </div>
             }
         }  
-        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
-        @Html.PagedListPager(Model, page => Url.Action("UserIndex", 
-             new { page }))
+
+
+    </div>
+    <div style="display: block; align-items: center; justify-content: center">
+        <div>
+        </div>
+        <div>
+              </div>
 
     </div>
 }
 
+@section pageNumbers
+{
+    Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("UserIndex",
+                              new {page}))
+              
+}
        
 
