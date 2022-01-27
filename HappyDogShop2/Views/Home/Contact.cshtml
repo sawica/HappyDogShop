@@ -1,35 +1,22 @@
 ﻿@{
     ViewBag.Title = "Contact";
 }
-<h2>Kontakt</h2>
-<h3>Skontaktuj się z nami</h3>
-
-<address>
-    Szczęśliwych Piesków 8<br />
-    Białystok, 15-123<br />
-    <abbr title="Phone">Telefon:</abbr>
-    123-456-789
-</address>
-
-<address>
-    <strong>Support:</strong>   <a href="mailto:Support@example.com">happydogshop2022@gmail.com</a><br />
-</address>
-
-<div>
+<div style=" border-style: double; border-radius: 8px; border-color: #f7e6cf; padding: 30px; margin: 50px;" class="sawibox form-horizontal ">
     <h2>Formularz kontaktowy:</h2>
+    <hr style="height: 1px; background-color: #e43e86; color: #e43e86" />
     <form method="post" action="/Home/Contact">
         <div>
-            Imie:
+            <strong>Imie:   </strong>
             <input type="text" name="customerName" />
         </div>
     
         <div>
-            Adres email:
+            <strong>Adres email:</strong>
             <input type="text" name="customerEmail" />
         </div>
     
         <div>
-            Sczegóły problemu: <br />
+            <strong>Sczegóły problemu:</strong> <br />
             <textarea name="customerRequest" cols="45" rows="4"></textarea>
         </div>
     
@@ -38,3 +25,21 @@
         </div>
     </form>
 </div>
+
+
+<div>
+    <h3>Skontaktuj się z nami</h3>
+
+    <address>
+        Szczęśliwych Piesków 8<br />
+        Białystok, 15-123<br />
+        <abbr title="Phone">Telefon:</abbr>
+        123-456-789
+    </address>
+
+    <address>
+        <strong>Email:</strong>   <a href="mailto:Support@example.com">happydogshop2022@gmail.com</a><br />
+    </address>
+    
+</div>
+

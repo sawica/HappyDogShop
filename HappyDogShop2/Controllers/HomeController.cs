@@ -19,7 +19,6 @@ namespace HappyDogShop2.Controllers
             List<int> list = new List<int>();
             list = db.CartItems.GroupBy(item => item.Product.ProductId).OrderByDescending(item => item.Count()).Select(x=>x.Key).ToList().GetRange(0,3);
             ViewBag.BestProducts = db.Products.Where(x => list.Contains(x.ProductId));
-            Console.Write(list.Count);
             return View();
         }
 
