@@ -25,12 +25,24 @@ namespace HappyDogShop2.Controllers
             ViewData["media"] = from media in db.MediaTypes select media;
             Console.WriteLine(categoryId);
             List<Product> list;
-            if (categoryId != -1)
+            if (categoryId != -1) 
             {
                 list = db.Products.Where(product => product.CategoryId == categoryId).ToList();
                 Console.WriteLine("poszla kategoria");
             }
-            else
+            else if (categoryId == -2) //nowości
+            {
+                list = db.Products.OrderByDescending(product => product.ProductId).Take(10).ToList();
+            }
+            else if (categoryId == -3) //promocje
+            {
+                // list = ((db.Products.Where(product => product.SaleId != null).ToList()).Where(product => product.Sale.StartDate <= @DateTime.Now).ToList()).Where(product => product.Sale.EndDate >= @DateTime.Now).ToList();
+
+                list = db.Products.Where(product => product.SaleId != null && product.Sale.StartDate <= @DateTime.Now &&
+                                         product.Sale.EndDate >= @DateTime.Now).ToList();
+
+            }
+            else //wszystko
             {
                 list = db.Products.ToList();
             }
