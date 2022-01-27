@@ -68,7 +68,7 @@ namespace HappyDogShop2.Controllers
         }
         
         // GET: Products
-        public ActionResult AdminIndex(int categoryId = -1, string Name = "", int Price1 = -1, int Price2 = -1, bool Sale = false, bool inStock = true)
+        public ActionResult AdminIndex(int categoryId = -1, string categoryName ="", string Name = "", int Price1 = -1, int Price2 = -1, bool Sale = false, bool inStock = true)
         {
             List<Product> list = db.Products.ToList();
             ViewBag.min = db.Products.Min(product => product.Price);
@@ -76,6 +76,8 @@ namespace HappyDogShop2.Controllers
 
             if (categoryId != -1) list = list.Where(product => product.CategoryId == categoryId).ToList();
             
+            if (categoryName != "") list = list.Where(product => product.Category.Name == categoryName).ToList();
+
             if (Name != "") list = list.Where(product => product.Name == Name).ToList();
             
             if (Price1 != -1 & Price2 != -1) list = list.Where(product => product.Price >= Price1 && product.Price <= Price2).ToList();

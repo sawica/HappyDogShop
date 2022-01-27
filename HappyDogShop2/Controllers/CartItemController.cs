@@ -73,7 +73,6 @@ namespace HappyDogShop2.Controllers
         }
         public ActionResult Create2(int Quantity, int ProductId, int? OrderId)
         {
-            //TODO jak zrobic to zeby przy braku otwartego zamowienia tworzylo nowe
             Console.Write(OrderId);
             if (OrderId == null)
             {

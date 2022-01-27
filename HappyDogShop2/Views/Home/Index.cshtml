@@ -46,7 +46,7 @@ function showSlides() {
 <div style="min-height: 400px" class="sjumbotron">
     <h1 style="margin-top: 80px; margin-bottom: 60px; color: #e43e86; font-family:Georgia; font-size: 70px">HappyDog Shop</h1>
     <p class="lead">To sklep stworzony z miłości do piesków. Znajdziesz u nas piękne i trwałe akcesoria, które z pewnoscią zadowolą Twojego czworonoga. Wszystkie produkty wykonujemy ręcznie z naturalnych materiałów.</p>
-    <p><a href="https://asp.net" class="btn sbtn-primary btn-lg">Zobacz ofertę &raquo;</a></p>
+    <p><a href=@Html.ActionLink("Produkty", "UserIndex", "Products") class="btn sbtn-primary btn-lg">Zobacz ofertę &raquo;</a></p>
 </div>
 
 <div class="row">
@@ -83,4 +83,3 @@ function showSlides() {
                }
     </div>
 </div>
- 

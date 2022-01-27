@@ -37,12 +37,7 @@ namespace HappyDogShop2.Controllers
 
             return View();
         }
-
-        // public ActionResult ProcessRequest()
-        // {
-        //     return View();
-        // }
-        //
+        
         [HttpPost]  
         public ActionResult Contact(string customerName, string customerEmail, string customerRequest) {  
             try {  
