@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Drawing.Printing;
 using System.Linq;
+using System.Net;
+using System.Net.Mail;
 using System.Web;
 using System.Web.Mvc;
 using HappyDogShop2.Models;
@@ -34,5 +36,35 @@ namespace HappyDogShop2.Controllers
 
             return View();
         }
+        
+        [HttpPost]  
+        public ActionResult Contact(string customerName, string customerEmail, string customerRequest) {  
+            try {  
+                if (ModelState.IsValid) {  
+                    var senderEmail = new MailAddress("happydogshop2022@gmail.com");
+                    var password = "oguvqpleisdmpgnu";  
+                    var sub = "Formularz kontaktowy od - " + customerName + " (" + customerEmail + ") ";  
+                    var body = customerRequest;  
+                    var smtp = new SmtpClient {  
+                        Host = "smtp.gmail.com",  
+                        Port = 587,  
+                        EnableSsl = true,  
+                        DeliveryMethod = SmtpDeliveryMethod.Network,  
+                        UseDefaultCredentials = false,  
+                        Credentials = new NetworkCredential(senderEmail.Address, password)  
+                    };  
+                    using(var mess = new MailMessage(senderEmail, senderEmail) {  
+                        Subject = sub,  
+                        Body = body  
+                    }) {  
+                        smtp.Send(mess);  
+                    }  
+                    return View();  
+                }  
+            } catch (Exception) {  
+                ViewBag.Error = "Some Error";  
+            }  
+            return View();  
+        }  
     }
 }

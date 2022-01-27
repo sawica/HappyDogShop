@@ -8,6 +8,7 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using HappyDogShop2.Models;
+using PagedList;
 
 namespace HappyDogShop2.Controllers
 {
@@ -19,7 +20,7 @@ namespace HappyDogShop2.Controllers
         
         // for users:
         
-        public ActionResult UserIndex(int categoryId = -1)
+        public ActionResult UserIndex(int? page, int categoryId = -1 )
         {
             ViewData["categories"] = from category in db.Categories select category;
             ViewData["media"] = from media in db.MediaTypes select media;
@@ -46,7 +47,9 @@ namespace HappyDogShop2.Controllers
             {
                 list = db.Products.ToList();
             }
-            return View(list);
+            int pageSize = 6;
+            int pageNumber = (page ?? 1);
+            return View(list.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Products/Details/5

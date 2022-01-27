@@ -1,6 +1,9 @@
+@model PagedList.IPagedList<HappyDogShop2.Models.Product>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
 @using System.Collections
 @using HappyDogShop2.Models
-@model IEnumerable<HappyDogShop2.Models.Product>
 
 @{
     ViewBag.Title = "UserIndex";
@@ -125,10 +128,14 @@
                     </h3>
        
                     <input type="submit" value="Dodaj do koszyka" class="btn btn-default" style=" border-color: #e43e86" onclick=""/>
-                    <button class="btn btn-default" style=" border-color: #e43e86">@Html.ActionLink("Dodaj do koszyka", "Create2", "CartItem", new { Quantity = 1, ProductId = item.ProductId, OrderID = @Session["orderID"]}, new {})</button>
+                    <button class="btn btn-default" style=" border-color: #e43e86">@Html.ActionLink("Dodaj do koszyka", "Create2", "CartItem", new { Quantity = 1, ProductId = item.ProductId, OrderID = @Session["orderId"]}, new {})</button>
                 </div>
             }
-        }
+        }  
+        Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+        @Html.PagedListPager(Model, page => Url.Action("UserIndex", 
+             new { page }))
+
     </div>
 }
 

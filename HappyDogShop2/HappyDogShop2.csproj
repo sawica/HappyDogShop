@@ -69,6 +69,14 @@
       <Private>True</Private>
     </Reference>
     <Reference Include="mscorlib" />
+    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1">
+      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1">
+      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51">
       <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
@@ -254,7 +262,6 @@
     <Content Include="Views\CartItem\Edit.cshtml" />
     <Content Include="Views\CartItem\Index.cshtml" />
     <Content Include="Views\CartItem\UserIndex.cshtml" />
-    <Content Include="Views\Home\ProcessRequest.cshtml" />
     <Content Include="Views\Login\Index.cshtml" />
     <Content Include="Views\MediaTypes\Create.cshtml" />
     <Content Include="Views\MediaTypes\Delete.cshtml" />
