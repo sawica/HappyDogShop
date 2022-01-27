@@ -38,7 +38,7 @@
     </script>
     
     <p>
-        Kategoria: <input type="text" name="CategoryId"/>
+        Kategoria: <input type="text" name="CategoryName"/>
     </p>
     
     <p>
@@ -110,13 +110,13 @@
             @Html.DisplayFor(modelItem => item.StockCount)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.MediaTypeId)
+            @Html.DisplayFor(modelItem => item.MediaType.Title)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CategoryId)
+            @Html.DisplayFor(modelItem => item.Category.Name)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.SaleId)
+            @Html.DisplayFor(modelItem => item.Sale.Name)
         </td>
         <td>
             @Html.ActionLink("Edytuj", "AdminEdit", new {id = item.ProductId}) |
