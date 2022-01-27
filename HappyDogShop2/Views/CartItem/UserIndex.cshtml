@@ -4,7 +4,7 @@
     ViewBag.Title = "CartUserIndex";
 }
 
-<h4 style="width: 70%; margin: 15px auto">Twoje zamówienie: @ViewBag.orderId @Session["OrderId"]</h4>
+<h4 style="width: 70%; margin: 15px auto">Twoje zamówienie: @Session["OrderId"]</h4>
 
 <table style="width: 70%; margin: 0 auto" class="table">
     <tr>
@@ -57,6 +57,14 @@
                 @Html.ActionLink("Szczegóły", "Details", new {id = item.ItemId}) |
                 @*@Html.ActionLink("Usuń", "Index", "Trash", new {id = item.ItemId}, new {})*@
             </td>
+            <td>
+                <button class="btn btn-default" style=" border-color: #e43e86">
+                    //to nie dziala
+                    @Html.ActionLink("Zapisz zmiany", "Edit", "CartItem", new
+                    {ItemId = item.ItemId, Quantity = @item.Quantity, ProductId = item.ProductId, OrderId = @Session["orderId"]}, new {})
+                </button>
+            </td>
+
         </tr>
 
     }
@@ -71,10 +79,13 @@
             @ViewBag.sum
         </td>
         <td colspan="2" style="padding-left: 110px">
-            <button class="btn btn-default" style=" border-color: #e43e86">@Html.ActionLink("Złóż zamówienie", "PlaceAnOrder", "Order", new
-                                                                               {OrderId = @Session["orderId"], AmountPaid = @ViewBag.sum }, new {})</button>
 
             
+            
+            <button class="btn btn-default" style=" border-color: #e43e86">@Html.ActionLink("Złóż zamówienie", "PlaceAnOrder", "Order", new
+                                                                           {OrderId = @Session["orderId"], AmountPaid = @ViewBag.sum}, new {})</button>
+
+
         </td>
     </tr>
 </table>

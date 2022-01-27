@@ -28,6 +28,7 @@ namespace HappyDogShop2.Controllers
         }
 
         // GET: CartItems/Details/5
+        
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -124,11 +125,14 @@ namespace HappyDogShop2.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "ItemId,Quantity,ProductId, OrderId")] CartItem cartItem)
         {
+            db.Entry(cartItem).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("UserIndex");
             if (ModelState.IsValid)
             {
                 db.Entry(cartItem).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("UserIndex");
             }
             return View(cartItem);
         }

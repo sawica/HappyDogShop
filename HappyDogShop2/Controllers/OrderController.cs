@@ -43,6 +43,8 @@ namespace HappyDogShop2.Controllers
         // GET: Orders/Details/5
         public ActionResult Details(int? id)
         {
+            prepareList();
+
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -187,6 +189,21 @@ namespace HappyDogShop2.Controllers
             db.Entry(order).State = EntityState.Modified;
             db.SaveChanges();
             return RedirectToAction("UserIndex", new {UserId = order.UserId});
+        }
+        public void prepareList()
+        {
+            ViewData["media"] = from media in db.MediaTypes select media;
+            List<SelectListItem> productList = new List<SelectListItem>();
+            List<SelectListItem> orderList = new List<SelectListItem>();
+            List<SelectListItem> mediaList = new List<SelectListItem>();
+            
+            foreach (var product in db.Products) productList.Add(new SelectListItem{ Text = product.Name, Value = product.ProductId.ToString()});
+            foreach (var order in db.Orders) orderList.Add(new SelectListItem{ Text = order.OrderId.ToString(), Value = order.OrderId.ToString()});
+            foreach (var media in db.MediaTypes) mediaList.Add(new SelectListItem{ Text = media.Title, Value = media.MediaTypeId.ToString()});
+            
+            ViewData["productList"] = productList;
+            ViewData["orderList"] = orderList;
+            ViewData["mediaList"] = mediaList;
         }
     }
 }

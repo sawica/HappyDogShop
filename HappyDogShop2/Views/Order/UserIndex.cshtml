@@ -1,3 +1,5 @@
+@using System.Collections
+@using HappyDogShop2.Models
 @model IEnumerable<HappyDogShop2.Models.Order>
 
 @{
@@ -22,13 +24,22 @@
         <th></th>
     </tr>
 
-    @foreach (var item in Model) {
+    @foreach (var item in Model)
+    {
         <tr>
             <td>
                 @Html.DisplayFor(modelItem => item.AmountPaid) zł
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Status)
+            </td>
+            <td>
+                @* @Html.DisplayFor(modelItem => item.CartItems.Count) *@
+                
+                @* @Html.Display(item.CartItems.Count.ToString()) *@
+                @* @item.CartItems.Count *@
+                @((IEnumerable<CartItem>) ViewData[item.OrderId.ToString()])
+               
             </td>
             <td>
                 @Html.ActionLink("Szczegóły", "Details", new { id=item.OrderId }) |

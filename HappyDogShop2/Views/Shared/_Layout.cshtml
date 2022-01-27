@@ -27,7 +27,7 @@
                     <li>@Html.ActionLink("Kontakt", "Contact", "Home")</li>
                     <li>@Html.ActionLink("Rejestracja", "Create", "User")</li>
                     <li>@Html.ActionLink("Produkty", "UserIndex", "Products")</li>
-                    <li style="display:none" id="cart">@Html.ActionLink("Koszyk", "UserIndex", "CartItem")</li>
+                    <li style="display:none" id="cart">@Html.ActionLink("Koszyk", "UserIndex", "CartItem", new {OrderId = @Session["orderId"]}, new {})</li>
                     <li  class="nav-item dropdown show" >
                         <a  id="admin" style="display:none"  class="btn dropdown-toggle" href="#" data-toggle="dropdown">Admin</a>
                         <div class="dropdown-menu">

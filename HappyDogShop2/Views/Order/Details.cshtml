@@ -1,3 +1,4 @@
+@using HappyDogShop2.Controllers
 @using HappyDogShop2.Models
 @model HappyDogShop2.Models.Order
 
@@ -36,13 +37,75 @@
         </dd>
 
     </dl>
-    Produkty:
-    @foreach (var item in (IEnumerable<CartItem>) ViewData["cartItems"]){
-               <h3 style="color: #1b6d85"> @item.Product.Name</h3>
-           }
+            <hr style="height: 1px; background-color: #e43e86; color: #e43e86" />
+    <h4>Produkty:</h4>
+    <table style="width: 70%; margin: 0 auto" class="table">
+            <tr>
+                <th>
+                    @Html.DisplayName("ilosc")
+                </th>
+                <th>
+                    @Html.DisplayName("Nazwa produktu")
+                </th>
+                <th>
+                    @Html.DisplayName("Cena produktu")
+                </th>
+
+            </tr>
+        @foreach (var item in (IEnumerable<CartItem>) ViewData["cartItems"]){
+       
+        <tr>
+                    <td style="width: 100px">
+                        @item.Quantity
+                    </td>
    
+                            <td style="width: 200px">
+                                @item.Product.Name
+                            </td>
+                            <td style="width: 100px">
+                                @item.Product.Price.ToString()
+                            </td>
+                            <td style="width: 100px">
+                                @foreach (var media in (IEnumerable<MediaType>) ViewData["media"])
+                                 { 
+                                     if (@item.Product.MediaTypeId == media.MediaTypeId) 
+                                    { 
+                                         <img style="height: 50px" src="@media.ImagePath"/> 
+                                    } 
+                                 } 
+    
+                            </td>
+                        }
+    
+                    }
+                    <td>
+                        @Html.ActionLink("Szczegóły", "UserDetails", "Products",new {id = item.ProductId}, new {} ) 
+                    </td>
+                </tr>
+    
+            }
+            <tr>
+                <td>
+    
+                </td>
+                <td style="padding-left: 150px">
+                    @* Suma: *@
+                </td>
+                <td >
+                    @* @ViewBag.sum *@
+                </td>
+                <td colspan="2" style="padding-left: 110px">
+                    @* <button class="btn btn-default" style=" border-color: #e43e86">@Html.ActionLink("Złóż zamówienie", "PlaceAnOrder", "Order", new *@
+                    @*                                                                    {OrderId = @Session["orderId"], AmountPaid = @ViewBag.sum }, new {})</button> *@
+                    @* *@
+    
+                </td>
+            </tr>
+    </table>
+
+
 </div> 
 
-<p> 
-    @Html.ActionLink("Wróć", "Index")
+<p>
+
 </p>
