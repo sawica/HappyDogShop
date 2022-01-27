@@ -4,7 +4,7 @@
     ViewBag.Title = "Index";
 }
 
-<h4>Promocje:</h4>
+<h4>Produkty koszykowe:</h4>
 
 <p>
     @Html.ActionLink("Utwórz nowe", "Create")
@@ -12,7 +12,7 @@
 
 <form asp-controller="CartItem" asp-action="Index" method="get">
     <p>
-        Wyszukaj: <input type="text" name="OrderId"/>
+        Wyszukaj zamówienie: <input type="text" name="OrderId"/>
         <input type="submit" value="Szukaj"/>
     </p>
 </form>
@@ -37,7 +37,7 @@
             @Html.DisplayFor(modelItem => item.Quantity)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.ProductId)
+            @Html.DisplayFor(modelItem => item.Product.Name)
         </td>
         <td>
             @Html.DisplayFor(modelItem => item.OrderId)
