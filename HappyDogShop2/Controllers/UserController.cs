@@ -50,6 +50,7 @@ namespace HappyDogShop2.Controllers
         // GET: Users/Create
         public ActionResult Create()
         {
+            prepareList();
             return View();
         }
         
@@ -73,6 +74,7 @@ namespace HappyDogShop2.Controllers
         // GET: Users/Edit/5
         public ActionResult Edit(int? id)
         {
+            prepareList();
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -151,5 +153,14 @@ namespace HappyDogShop2.Controllers
                 return RedirectToAction("Index");
             }
             return View(user);
+        }
+
+        public void prepareList()
+        {
+            List<SelectListItem> saleList = new List<SelectListItem>();
+
+            foreach (var sale in db.Sales) saleList.Add(new SelectListItem{ Text = sale.Name + ": " + sale.ValueInPercent + "%", Value = sale.SaleId.ToString()});
+
+            ViewData["saleList"] = saleList;
         }
 }}

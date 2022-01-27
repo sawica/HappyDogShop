@@ -202,6 +202,14 @@
     <Compile Include="Migrations\202201262128228_price.Designer.cs">
       <DependentUpon>202201262128228_price.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202201270054215_defaultAmountPrice.cs" />
+    <Compile Include="Migrations\202201270054215_defaultAmountPrice.Designer.cs">
+      <DependentUpon>202201270054215_defaultAmountPrice.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202201270103300_orderDate.cs" />
+    <Compile Include="Migrations\202201270103300_orderDate.Designer.cs">
+      <DependentUpon>202201270103300_orderDate.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\CartItem.cs" />
     <Compile Include="Models\Category.cs" />
@@ -320,6 +328,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\202201262128228_price.resx">
       <DependentUpon>202201262128228_price.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201270054215_defaultAmountPrice.resx">
+      <DependentUpon>202201270054215_defaultAmountPrice.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202201270103300_orderDate.resx">
+      <DependentUpon>202201270103300_orderDate.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

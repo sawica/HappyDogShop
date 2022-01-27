@@ -105,14 +105,8 @@ namespace HappyDogShop2.Controllers
         // GET: Products/Create
         public ActionResult AdminCreate()
         {
-            ViewData["categories"] = from category in db.Categories select category;
-            ViewData["media"] = from media in db.MediaTypes select media;
-            List<SelectListItem> categoryList = new List<SelectListItem>();
-            foreach (var category in db.Categories)
-            {
-                categoryList.Add(new SelectListItem{ Text = category.Name, Value = category.CategoryId.ToString()});
-            }
-            ViewData["categoriesList"] = categoryList;
+            prepareList();
+
             return View();
         }
 
@@ -136,6 +130,8 @@ namespace HappyDogShop2.Controllers
         // GET: Products/Edit/5
         public ActionResult AdminEdit(int? id)
         {
+            prepareList();
+            
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -212,6 +208,24 @@ namespace HappyDogShop2.Controllers
                 list = db.Categories.ToList();
             }
             return View(list);
+        }
+
+        public void prepareList()
+        {
+            ViewData["categories"] = from category in db.Categories select category;
+            ViewData["media"] = from media in db.MediaTypes select media;
+            
+            List<SelectListItem> categoryList = new List<SelectListItem>();
+            List<SelectListItem> mediaList = new List<SelectListItem>();
+            List<SelectListItem> saleList = new List<SelectListItem>();
+
+            foreach (var category in db.Categories) categoryList.Add(new SelectListItem{ Text = category.Name, Value = category.CategoryId.ToString()});
+            foreach (var sale in db.Sales) saleList.Add(new SelectListItem{ Text = sale.Name + ": " + sale.ValueInPercent + "%", Value = sale.SaleId.ToString()});
+            foreach (var media in db.MediaTypes) mediaList.Add(new SelectListItem{ Text = media.Title, Value = media.MediaTypeId.ToString()});
+
+            ViewData["categoriesList"] = categoryList;
+            ViewData["mediaList"] = mediaList;
+            ViewData["saleList"] = saleList;
         }
     }
 }
