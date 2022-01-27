@@ -6,47 +6,49 @@
     ViewBag.Title = "Index";
 }
 
-<h4>Zamówienia:</h4>
+<h4 style="width: 70%; margin: 45px auto">Twoje zamówienia: </h4>
 
-<p>
-    Mozna dac tez liczbe produktow zy cos a dopiero w szczegolach ich liste
-</p>
+@* <p> *@
+@*     Mozna dac tez liczbe produktow zy cos a dopiero w szczegolach ich liste *@
+@* </p> *@
 
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.AmountPaid) 
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Status)
-        </th>
-
-        <th></th>
-    </tr>
-
-    @foreach (var item in Model)
-    {
+<div class="sawibox">
+    <table class="table">
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.AmountPaid) zł
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Status)
-            </td>
-            <td>
-                @* @Html.DisplayFor(modelItem => item.CartItems.Count) *@
-                
-                @* @Html.Display(item.CartItems.Count.ToString()) *@
-                @* @item.CartItems.Count *@
-                @((IEnumerable<CartItem>) ViewData[item.OrderId.ToString()])
-               
-            </td>
-            <td>
-                @Html.ActionLink("Szczegóły", "Details", new { id=item.OrderId }) |
-                @Html.ActionLink("Zamów ponownie", "OrderAgain", new { OldOrderId=item.OrderId, NewOrderId = Session["orderId"] }) |
-                
-            </td>
+            <th>
+                @Html.DisplayNameFor(model => model.AmountPaid) 
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Status)
+            </th>
+    
+            <th></th>
         </tr>
-    }
-
-</table>
+    
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.AmountPaid) zł
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Status)
+                </td>
+                <td>
+                    @* @Html.DisplayFor(modelItem => item.CartItems.Count) *@
+                    
+                    @* @Html.Display(item.CartItems.Count.ToString()) *@
+                    @* @item.CartItems.Count *@
+                    @((IEnumerable<CartItem>) ViewData[item.OrderId.ToString()])
+                   
+                </td>
+                <td>
+                    @Html.ActionLink("Szczegóły", "Details", new { id=item.OrderId }) |
+                    @Html.ActionLink("Zamów ponownie", "OrderAgain", new { OldOrderId=item.OrderId, NewOrderId = Session["orderId"] }) |
+                    
+                </td>
+            </tr>
+        }
+    
+    </table>
+</div>
